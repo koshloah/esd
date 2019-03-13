@@ -123,69 +123,99 @@
   //window.onload = getImages();
 
   function getImages(){
-    //ajax
-    $.get( "https://dog.ceo/api/breeds/image/random", function( result ) {
-      if(result.status == "error"){
-          noResult();
-        }
-        else if(result.status == "success"){
-          loadImages(result);
-        }
+
+    $.when(
+      $.get( "https://dog.ceo/api/breeds/image/random", function( result ) {
+            img1 = result;
+      }),
+      $.get( "https://dog.ceo/api/breeds/image/random", function( result ) {
+            img2 = result;
+      }),
+      $.get( "https://dog.ceo/api/breeds/image/random", function( result ) {
+            img3 = result;
+      }),
+      $.get( "https://dog.ceo/api/breeds/image/random", function( result ) {
+            img4 = result;
+      })
+    ).then(function() {
+
+      document.getElementById("img1").src= img1.message;
+      document.getElementById("img2").src= img2.message;
+      document.getElementById("img3").src= img3.message;
+      document.getElementById("img4").src= img4.message;
+
     });
-    $.get( "https://dog.ceo/api/breeds/image/random", function( result ) {
-      if(result.status == "error"){
-          noResult();
-        }
-        else if(result.status == "success"){
-          loadImages2(result);
-        }
-    });
-    $.get( "https://dog.ceo/api/breeds/image/random", function( result ) {
-      if(result.status == "error"){
-          noResult();
-        }
-        else if(result.status == "success"){
-          loadImages3(result);
-        }
-    });
-    $.get( "https://dog.ceo/api/breeds/image/random", function( result ) {
-      if(result.status == "error"){
-          noResult();
-        }
-        else if(result.status == "success"){
-          loadImages4(result);
-        }
-    });
+
+    // //ajax
+    // $.get( "https://dog.ceo/api/breeds/image/random", function( result ) {
+    //   if(result.status == "error"){
+    //       noResult();
+    //     }
+    //     else if(result.status == "success"){
+    //       loadImages(result);
+    //     }
+    // });
+    // $.get( "https://dog.ceo/api/breeds/image/random", function( result ) {
+    //   if(result.status == "error"){
+    //       noResult();
+    //     }
+    //     else if(result.status == "success"){
+    //       loadImages2(result);
+    //     }
+    // });
+    // $.get( "https://dog.ceo/api/breeds/image/random", function( result ) {
+    //   if(result.status == "error"){
+    //       noResult();
+    //     }
+    //     else if(result.status == "success"){
+    //       loadImages3(result);
+    //     }
+    // });
+    // $.get( "https://dog.ceo/api/breeds/image/random", function( result ) {
+    //   if(result.status == "error"){
+    //       noResult();
+    //     }
+    //     else if(result.status == "success"){
+    //       loadImages4(result);
+    //     }
+    // });
     
   }
   
 	
 		
-	function noResult(){
-		//do something
-	}
+	// function noResult(){
+	// 	//do something
+	// }
 	  
-	function loadImages(result){
-	  console.log(result.message); 
-		document.getElementById("img1").src= result.message;
-  }
+	// function loadImages(result){
+	//   console.log(result.message); 
+	// 	document.getElementById("img1").src= result.message;
+  // }
   
-  function loadImages2(result){
-	  console.log(result.message); 
-		document.getElementById("img2").src= result.message;
-  }
+  // function loadImages2(result){
+	//   console.log(result.message); 
+	// 	document.getElementById("img2").src= result.message;
+  // }
   
-  function loadImages3(result){
-	  console.log(result.message); 
-		document.getElementById("img3").src= result.message;
-  }
+  // function loadImages3(result){
+	//   console.log(result.message); 
+	// 	document.getElementById("img3").src= result.message;
+  // }
   
-  function loadImages4(result){
-	  console.log(result.message); 
-		document.getElementById("img4").src= result.message;
-	}
+  // function loadImages4(result){
+	//   console.log(result.message); 
+	// 	document.getElementById("img4").src= result.message;
+	// }
 	  
   </script>
+
+
+
+
+
+
+
 
 <!-- Footer -->
 <footer class="w3-center w3-black w3-padding-3" style="height:23px;">
