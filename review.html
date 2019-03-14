@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Adogtion Staff</title>
+<title>Adogtion Staff Review</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
@@ -67,41 +67,46 @@
   <!-- Application Listing Section -->
   <body>
     <div class="w3-container" id="appplication_status">
-        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Application Listing</h3> 
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Application Details</h3> 
       <table id="applicationTable" class='table table-striped' id='book-list' border='1'>
-        <tr>
+        <!-- <tr>
             <th>Application ID</th>
             <th>Date Submitted</th>
             <th>Status</th>
             <th>Review</th>
-        </tr>
+        </tr> -->
       </table>
     </div>
 
 
   <script>
+    // <-- php $_GET() function-->
+      function $_GET(q,s) { 
+        s = s ? s : window.location.search; 
+        var re = new RegExp('&'+q+'(?:=([^&]*))?(?=&|$)','i'); 
+        return (s=s.replace(/^?/,'&').match(re)) ? (typeof s[1] == 'undefined' ? '' : decodeURIComponent(s[1])) : undefined; 
+      }
+
+      var application_id = $_GET('id');
+ 
     $(function () {
         // Change serviceURL 
-        var serviceURL = "http://DESKTOP-QFRUS2D:8080/applications";
-        var rows = "";
+        var serviceURL = "http://DESKTOP-QFRUS2D:8080/"+ application_id;
         $.get(serviceURL, function (data) {
-            var applicationList = data.Application; //the array is in data.Application of the JSON
+            var application = data.Application; //the array is in data.Application of the JSON
 
-            if (applicationList == undefined) { // did not manage to call service
+            if (application == undefined) { // did not manage to call service
                 $('#applicationTable').empty();
                 $('body').append("<label>There is a problem retrieving application data, please try again later.</label>");
             }
             // for loop to setup each table row with obtained book data
-            for (var i = 0; i < applicationList.length; i++) {
-                eachRow =
-                    "<td>" + applicationList[i].applicationID + "</td>" +
-                    "<td>" + applicationList[i].date + "</td>" +
-                    "<td>" + applicationList[i].price + "</td>" +
-                    "<td><a href='review?id=" + applicationList[i].applicationID + "'>"+
-                    "review</a>";                
-                rows += "<tr>" + eachRow + "</tr>";
+            eachRow =
+          
+                    "<tr><th>Name<th><td>" + application.name + "</td>" +
+                    "<th>Application ID<th><td>" + application.id + "</td>" +
+                    "<th>Dog Chosen<th><td>" + application.dog + "</td><tr>"; 
             }
-            $('#booksTable').append(rows);
+            $('#booksTable').append(eachRow);
         }) // $.get
 
             .fail(function () {
