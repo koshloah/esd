@@ -68,14 +68,23 @@
   <body>
     <div class="w3-container" id="appplication_status">
         <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Application Details</h3> 
-      <table id="applicationTable" class='table table-striped' id='book-list' border='1'>
+
+        <table id="applicationTable" class='table table-striped' border='1'>
         <!-- <tr>
             <th>Application ID</th>
             <th>Date Submitted</th>
             <th>Status</th>
             <th>Review</th>
         </tr> -->
-      </table>
+     
+      <form action="/process.html">
+        <input class="w3-radio w3-border" type="radio" name=process value="Approved">Approved
+        <input class="w3-radio w3-border" type="radio" name=process value="Reject application">Reject application 
+        <button class="w3-button w3-black w3-section" type="submit">
+          <i class="fa fa-paper-plane"></i> SUBMIT
+        </button>
+      </form>
+    </table>
     </div>
 
 
