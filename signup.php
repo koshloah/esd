@@ -47,14 +47,13 @@ if(isset($_REQUEST["firstName"]) && isset($_REQUEST["lastName"]) && isset($_REQU
         $user = new User($firstName,$lastName,$email,$phone,$hashedpwd,$role);
         $insertresult = $userdb->add($user);
         if($insertresult){
-            echo "Book has been added";
-            header("Location: home.php");
+            header("Location: index.php");
             exit;
         }
         else{
             $errors[]="Something went wrong, cannot add to database";
             $_SESSION["errormsg"] = $errors;
-            header("Location: home.php");
+            header("Location: index.php");
             exit;
         }
     }
