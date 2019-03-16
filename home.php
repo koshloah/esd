@@ -1,7 +1,7 @@
 <?php 
 require_once "include/common.php";
 
-var_dump($_SESSION);
+//var_dump($_SESSION);
 ?>
 
 <!DOCTYPE html>

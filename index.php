@@ -27,7 +27,9 @@
     <input class="w3-input w3-border" type="text" placeholder="Email" required name="email">
     <input class="w3-input w3-section w3-border" type="password" placeholder="Password" required name="password">
     <input class="w3-button w3-black w3-section" type="submit" name="submitBtn">
+    <a href="signup-view.php" class="w3-button w3-black w3-section">Sign Up</a>
 </form>
+
 </div>
 
 <?php
