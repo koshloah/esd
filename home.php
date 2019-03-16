@@ -1,36 +1,42 @@
+<?php 
+require_once "include/common.php";
+
+var_dump($_SESSION);
+?>
+
 <!DOCTYPE html>
 <html>
-<title>Adogtion</title>
+<!--<title>Adogtion</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<!-- jQuery library -->
+// jQuery library
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-</head>
+</head>-->
 <body onload="getImages();">
 
 <!-- Navbar -->
-<div class="w3-top">
+<!--<div class="w3-top">
     <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-      <a href="#home" class="w3-bar-item w3-button"><i class="fas fa-dog"></i> A<b>dog</b>tion <i class="fas fa-home"></i></a>
+      <a href="home.html" class="w3-bar-item w3-button"><i class="fas fa-dog"></i> A<b>dog</b>tion <i class="fas fa-home"></i></a>
       <div class="w3-right w3-hide-small">
-      <a href="#" class="w3-bar-item w3-button">SEARCH</a>
+      <a href="#" class="w3-bar-item w3-button">SEARCH</a>-->
       <!--<a href="#" class="w3-bar-item w3-button w3-hide-small">Adopt</a>
       <a href="#" class="w3-bar-item w3-button w3-hide-small">Adopt</a>-->
-      <div class="w3-dropdown-hover w3-hide-small">
+      <!--<div class="w3-dropdown-hover w3-hide-small">
         <button class="w3-button" title="More">A D O P T <i class="fa fa-caret-down"></i></button>     
         <div class="w3-dropdown-content w3-bar-block w3-card-4">
           <a href="#appplication_status" class="w3-bar-item w3-button">Applications</a>
-          <a href="#" class="w3-bar-item w3-button">ABCDEF</a>
+          <a href="signup-view.php" class="w3-bar-item w3-button">Temp Sign-up Link</a>
         </div>
       </div>
       <a href="#" class="w3-bar-item w3-button w3-hide-small">ABOUT</a>
-      </div>
+      </div>-->
       <!--<a href="javascript:void(0)" class="w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>-->
-    </div>
-  </div>
+    <!--</div>
+  </div>-->
 
 
 <!-- Header -->
@@ -218,8 +224,8 @@
 
 
 <!-- Footer -->
-<footer class="w3-center w3-black w3-padding-3" style="height:23px;">
+<!--<footer class="w3-center w3-black w3-padding-3" style="height:23px;">
   <p>Powered by <a href="#" title="" target="_blank" class="w3-hover-text-green">ESD G1T6</a></p>
-</footer>
+</footer>-->
 </body>
 </html>
