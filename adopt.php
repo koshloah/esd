@@ -1,6 +1,6 @@
 <?php
 require_once "include/common.php";
-require_once "include/DogDAO.php";
+/*require_once "include/DogDAO.php";
 
 //var_dump($_REQUEST);
 if(isset($_REQUEST["breed"])){
@@ -27,5 +27,12 @@ if(isset($_REQUEST["breed"])){
         $_SESSION["errormsg"] = $errors;
         //header("Location: adopt-view.php");
     }
+}*/
+//var_dump($_REQUEST);
+if(isset($_REQUEST["breed"])){
+    $selectedDogBreed = $_REQUEST["breed"];
+    $_SESSION["breed"] = $selectedDogBreed;
+    header("Location: adopt-view.php");
 }
+
 ?>

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://xsd.tns.tibco.com/amf/models/sharedresource/jdbc" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmlns:subject="http://xsd.tns.tibco.com/trinity/models/identity/subject" xmi:id="_016f0UidEem_4YntQzyMjw" name="get_dog.module.JDBCConnectionResource" type="jdbc:JdbcDataSource">
-  <jndi:reference xmi:id="_029BoEidEem_4YntQzyMjw" key="subjectJndiName" type="subject:SubjectConfiguration" value=""/>
-  <jndi:configuration xsi:type="jdbc:JdbcDataSource" xmi:id="_029BoUidEem_4YntQzyMjw" username="root" password="#!l4ku6mKQAckcvc+jWdMw2g==">
-    <connectionConfig xsi:type="jdbc:NonXaConnection" xmi:id="_029BokidEem_4YntQzyMjw" jdbcDriver="com.mysql.jdbc.Driver" dbURL="jdbc:mysql://localhost:3306/dogs"/>
-    <connectionProperties xmi:id="_3EeCEEidEem_4YntQzyMjw" key="jarFile" value="mysql"/>
-  </jndi:configuration>
-</jndi:namedResource>

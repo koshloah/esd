@@ -1,13 +1,9 @@
 <?php
 
 require_once "include/common.php";
-require_once "include/DogDAO.php";
+//require_once "include/DogDAO.php";
 
-$dogBreedStatus = "";
-$allDogStatus = "";
-$selectedDogBreed =""; 
-
-$dogdb = new DogDAO();
+/*$dogdb = new DogDAO();
 $dogBreeds = $dogdb->getBreeds();
 //var_dump($dogBreeds);
 if($dogBreeds != false){
@@ -17,9 +13,59 @@ else{
     $errors[] = "Unable to get list of breeds";
     $_SESSION["errormsg"] = $errors;
     header("Location: adopt-view.php");
-}
+}*/
+
+$dogBreedStatus = "";
+$selectedDogBreed =""; 
+$uniqueDogBreeds = [];
 
 if(isset($_SESSION["dogList"])){
+    $allDogs = $_SESSION["dogList"];
+    foreach($allDogs as $eachDog){
+        $uniqueDogBreeds[]=$eachDog->breed;
+    }
+    $dogBreeds = array_unique($uniqueDogBreeds);
+    $dogBreedStatus = "success";
+    if(isset($_SESSION["breed"])){
+        $selectedDogBreed = $_SESSION["breed"];
+
+        if($selectedDogBreed == "All" || $selectedDogBreed == ""){
+
+        }
+        else{
+            $filteredDogList = [];
+            foreach($allDogs as $eachDog){
+                if($eachDog->breed==$selectedDogBreed){
+                    $filteredDogList[]=$eachDog;
+                }
+            }
+            $allDogs = $filteredDogList;
+        }
+        
+    }
+}
+// retrieve from dog service if session is empty
+else{
+    $url = "http://LAPTOP-LYJK:8080/dogs";
+    $json = file_get_contents($url);
+    $data = json_decode($json);
+
+    if($data != false){
+        $allDogs = $data->Dog;
+        foreach($allDogs as $eachDog){
+            $uniqueDogBreeds[]=$eachDog->breed;
+        }
+        $dogBreeds = array_unique($uniqueDogBreeds);
+        $dogBreedStatus = "success";
+        $_SESSION["dogList"] = $allDogs;
+    }
+}
+
+
+var_dump($_REQUEST);
+
+
+/*if(isset($_SESSION["dogList"])){
     $allDogStatus = "success";
     $allDogs = $_SESSION["dogList"];
     if(isset($_SESSION["selectedDogBreed"])){
@@ -39,7 +85,7 @@ else{
         $_SESSION["errormsg"] = $errors;
         header("Location: adopt-view.php");
     }
-}
+}*/
 
 ?>
 <!DOCTYPE html>
@@ -47,7 +93,7 @@ else{
 <body>
 
 
-    <div class="w3-container" id="appplication_status" style="margin-top:50px;">
+    <div class="w3-container" id="appplication_status" style="margin-top:20px;">
         <h1>Adopt, Don't Shop!</h1>
         <form action="adopt.php" method="post">
         <table>
@@ -89,7 +135,7 @@ else{
                         echo "<div class='w3-col l3 m6 w3-margin-bottom'>
                             <div class='w3-display-container'>
                                 <div class='w3-display-topleft w3-green w3-padding'>$eachDog->name, $availableStatus</div>
-                                <a href='http://www.google.com'><img src='$eachDog->pic1' style='width:280px; height:280px; id='img$counter'> </a>
+                                <a href='viewdog.php?dogid=$eachDog->id'><img src='$eachDog->pic1' style='width:280px; height:280px; id='img$counter'> </a>
                             </div>
                         </div>";
                     }
@@ -98,7 +144,7 @@ else{
                         echo "<div class='w3-col l3 m6 w3-margin-bottom'>
                             <div class='w3-display-container'>
                                 <div class='w3-display-topleft w3-red w3-padding'>$eachDog->name, $availableStatus</div>
-                                <a href='http://www.google.com'><img src='$eachDog->pic1' style='width:280px; height:280px; id='img$counter'> </a>
+                                <a href='viewdog.php?dogid=$eachDog->id'><img src='$eachDog->pic1' style='width:280px; height:280px; id='img$counter'> </a>
                             </div>
                         </div>";
                     }
@@ -108,15 +154,6 @@ else{
             ?>
         </div>
 
-        
-
-
-
-
-
-
-
-
     </div>
     
 <?php
@@ -125,13 +162,6 @@ printErrors();
 
 <!-- End page content -->
 </div>
-
-<!--<script>
-function dogBreedChange() {
-  var x = document.getElementById("breedSelect").value;
-  document.getElementById("demo").innerHTML = "You selected: " + x;
-}
-</script>-->
 
 </body>
 </html>
