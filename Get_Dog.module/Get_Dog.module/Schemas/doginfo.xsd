@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Studio 2018 (https://www.liquid-technologies.com) -->
+<schema xmlns:tns="Dogs" elementFormDefault="qualified"  targetNamespace="Dogs" xmlns="http://www.w3.org/2001/XMLSchema">
+	<complexType name="Dog">
+		<sequence>
+			<element name="id" type="int"/>
+			<element name="name" type="string"/>
+			<element name="age" type="string"/>
+			<element name="breed" type="string"/>
+			<element name="size" type="string"/>
+			<element name="sex" type="string"/>
+			<element name="status" type="string"/>
+			<element name="altered" type="string"/>
+			<element name="hasShots" type="string"/>
+			<element name="houseTrained" type="string"/>
+			<element name="description" type="string"/>
+			<element name="pic1" type="string"/>
+			<element name="pic2" type="string"/>
+			
+		</sequence>
+	</complexType>
+    <element name="Dog" type="tns:Dog" />
+    <complexType name="Dogs">
+        <sequence>
+            <element ref="tns:Dog" minOccurs="0" maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+    <element name="Dogs" type="tns:Dogs" />
+    <complexType name="Add_Dog">
+        <sequence>
+            <element name="id" type="int"/>
+            <element name="name" type="string"/>
+            <element name="age" type="string"/>
+            <element name="breed" type="string"/>
+            <element name="size" type="string"/>
+            <element name="sex" type="string"/>
+            <element name="status" type="string"/>
+            <element name="altered" type="string"/>
+            <element name="hasShots" type="string"/>
+            <element name="houseTrained" type="string"/>
+            <element name="description" type="string"/>
+            <element name="pic1" type="string"/>
+            <element name="pic2" type="string"/>
+        </sequence>
+    </complexType>
+    <element name="Add_Dog" type="tns:Add_Dog"/>
+</schema>
