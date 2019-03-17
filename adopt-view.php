@@ -59,6 +59,9 @@ else{
         $dogBreedStatus = "success";
         $_SESSION["dogList"] = $allDogs;
     }
+    else{
+        header("Location: home.php");
+    }
 }
 
 
