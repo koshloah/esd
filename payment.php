@@ -23,7 +23,7 @@
     -d cancelUrl=https://example.com/cancel \
     -d returnUrl=https://example.com/success */
 
-    $cost = 0.01;
+    $cost = 2000;
 
     if(isset($_GET['PayerID']) && isset($_GET['token'])){
         $payerid = urlencode($_GET['PayerID']);
@@ -56,7 +56,11 @@
         $transactionid = $output_array['PAYMENTINFO_0_TRANSACTIONID'];
 
         echo $transactionid;
-        //header("Location: home.php");
+        echo "<pre>";
+        var_dump($output_array);
+        echo "</pre>";
+        
+        //header("Location: paymentcomplete.php?transactionID=$transactionid");
     }
     else{
         $baseurl = 'https://api-3t.sandbox.paypal.com/nvp'; //sandbox

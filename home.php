@@ -1,7 +1,58 @@
 <?php 
 require_once "include/common.php";
 
-//var_dump($_SESSION);
+$url = "https://dog-api.kinduff.com/api/facts";
+$json = file_get_contents($url);
+$data = json_decode($json);
+
+$randomDogFact = "";
+if($data != false){
+  var_dump($data->facts);
+  $randomDogFact = $data->facts[0];
+}
+else{
+  $randomDogFact = "The dog in-charge of facts is currently on vacation, sorry for the inconvenience!";
+}
+
+// To retrieve available dogs
+$dogBreedStatus = "";
+$selectedDogBreed =""; 
+$uniqueDogBreeds = [];
+
+if(isset($_SESSION["breed"])){
+  unset($_SESSION["breed"]);
+}
+
+if(isset($_SESSION["dogList"])){
+    $allDogs = $_SESSION["dogList"];
+    shuffle($allDogs);
+    foreach($allDogs as $eachDog){
+        $uniqueDogBreeds[]=$eachDog->breed;
+    }
+    $dogBreeds = array_unique($uniqueDogBreeds);
+    $dogBreedStatus = "success";
+}
+// retrieve from dog service if session is empty
+else{
+    $url = "http://LAPTOP-LYJK:8080/dogs";
+    $json = file_get_contents($url);
+    $data = json_decode($json);
+
+    if($data != false){
+        $allDogs = $data->Dog;
+        foreach($allDogs as $eachDog){
+            $uniqueDogBreeds[]=$eachDog->breed;
+        }
+        $dogBreeds = array_unique($uniqueDogBreeds);
+        $dogBreedStatus = "success";
+        $_SESSION["dogList"] = $allDogs;
+    }
+    else{
+        header("Location: home.php");
+    }
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -15,8 +66,9 @@ require_once "include/common.php";
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>-->
-<body onload="getImages();">
 
+<!-- <body onload="getImages();"> -->
+<body>
 <!-- Navbar -->
 <!--<div class="w3-top">
     <div class="w3-bar w3-white w3-wide w3-padding w3-card">
@@ -51,7 +103,7 @@ require_once "include/common.php";
 <div class="w3-content w3-padding" style="max-width:1564px">
 
     <!-- Application Status Section -->
-  <div class="w3-container" id="appplication_status">
+  <!-- <div class="w3-container" id="appplication_status">
       <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Check Application Status</h3>
       <p>Enter your application ID to check application status</p>
       <form action="http:www.google.com" target="_blank">
@@ -60,14 +112,14 @@ require_once "include/common.php";
           <i class="fa fa-paper-plane"></i> SUBMIT
         </button>
       </form>
-    </div>
+    </div> -->
 
-  <!-- Newly Listed Section -->
-  <div class="w3-container" id="newly_listed">
-    <h3 class="w3-border-bottom w3-border-light-grey">Newly Listed</h3>
+  <!-- Available Dogs Section -->
+  <div class="w3-container" id="">
+    <h3 class="w3-border-bottom w3-border-light-grey"><b>Available Dogs</b></h3>
   </div>
 
-  <div class="w3-row-padding">
+  <!-- <div class="w3-row-padding">
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-display-container">
         <div class="w3-display-topleft w3-black w3-padding">Jun Wei</div>
@@ -90,8 +142,63 @@ require_once "include/common.php";
       <div class="w3-display-container">
         <div class="w3-display-topleft w3-black w3-padding">Xuesi</div>
         <img src="images/load2.gif" alt="House" style="width:100%; height:200px;" id="img4">
+        <a class="w3-right" href="adopt-view.php">VIEW MORE</a>
       </div>
     </div>
+  </div> -->
+
+  <div class="w3-row-padding">
+    <?php
+      $counter = 1;
+      $availableStatus = "";
+      $availableDogArray = [];
+      
+
+      foreach ($allDogs as $eachDog){
+        if($eachDog->status == "A"){
+          $availableDogArray[] = $eachDog;
+          // $availableStatus = "Available";
+          // echo "<div class='w3-col l3 m6 w3-margin-bottom'>
+          //     <div class='w3-display-container'>
+          //         <div class='w3-display-topleft w3-green w3-padding'>$eachDog->name, $availableStatus</div>
+          //         <a href='viewdog.php?dogid=$eachDog->id'><img src='$eachDog->pic1' style='width:280px; height:280px; id='img$counter'> </a>
+          //     </div>
+          // </div>";
+        }
+        // else{
+        //     $availableStatus = "Adopted";
+        //     echo "<div class='w3-col l3 m6 w3-margin-bottom'>
+        //         <div class='w3-display-container'>
+        //             <div class='w3-display-topleft w3-red w3-padding'>$eachDog->name, $availableStatus</div>
+        //             <a href='viewdog.php?dogid=$eachDog->id'><img src='$eachDog->pic1' style='width:280px; height:280px; id='img$counter'> </a>
+        //         </div>
+        //     </div>";
+        // }
+        
+        $counter += 1;
+        if(count($availableDogArray) == 4){
+          break;
+        }
+      }
+
+      foreach($availableDogArray as $eachAvailableDog){
+        $availableStatus = "Available";
+        echo "<div class='w3-col l3 m6 w3-margin-bottom'>
+            <div class='w3-display-container'>
+                <div class='w3-display-bottomleft w3-green w3-padding'>$eachAvailableDog->name, $availableStatus</div>
+                <a href='viewdog2.php?dogid=$eachAvailableDog->id'><img src='$eachAvailableDog->pic1' style='width:100%; height:280px; '></a>
+            </div>
+        </div>";
+      }
+      ?>
+      <a class="w3-right" href="adopt-view.php" style="margin-right:7px; margin-top:-10px;">VIEW MORE</a>
+    </div>
+
+  <!-- Random dog fact -->
+  <div class="w3-container" id="random_dog_facts">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16" style="margin-top:-15px;"><b>Random dog facts</b></h3>
+    <h4><?php echo "<b>Did you know? </b>" . $randomDogFact; ?></h4>
+    <img src="images/dog2.png" width="600px" height="400px">
   </div>
 
   <!--<div class="w3-row-padding">
@@ -214,14 +321,7 @@ require_once "include/common.php";
 	// 	document.getElementById("img4").src= result.message;
 	// }
 	  
-  </script>
-
-
-
-
-
-
-
+</script>
 
 <!-- Footer -->
 <!--<footer class="w3-center w3-black w3-padding-3" style="height:23px;">

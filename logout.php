@@ -12,6 +12,6 @@ require_once "include/common.php";
 foreach($_SESSION as $key=>$value){
     unset($_SESSION[$key]);
 }
-header("Location: index.php");
+header("Location: home.php");
 exit;
 ?>

@@ -46,19 +46,20 @@ function printErrors() {
 <div class="w3-top">
     <div class="w3-bar w3-white w3-wide w3-padding w3-card">
         <a href="home.php" class="w3-bar-item w3-button"><i class="fas fa-dog"></i> A<b>dog</b>tion <i class="fas fa-home"></i></a>
-        <a class="w3-bar-item">Welcome, <?php echo $_SESSION['firstName'].".";?></a>
+        <!-- <a class="w3-bar-item">Welcome, <?php echo $_SESSION['firstName'].".";?></a> -->
             <div class="w3-right w3-hide-small">
                 <a href="adopt-view.php" class="w3-bar-item w3-button">ADOPT</a>
+                <a href="adoptionstatus.php" class="w3-bar-item w3-button">ADOPTION STATUS</a>
                 <!--<a href="#" class="w3-bar-item w3-button w3-hide-small">Adopt</a>
                 <a href="#" class="w3-bar-item w3-button w3-hide-small">Adopt</a>-->
-                <div class="w3-dropdown-hover w3-hide-small">
+                <!-- <div class="w3-dropdown-hover w3-hide-small">
                     <a class="w3-button" title="More">APPLY <i class="fa fa-caret-down"></i></a>     
                     <div class="w3-dropdown-content w3-bar-block w3-card-4">
                     <a href="#" class="w3-bar-item w3-button">New Application</a>
                     <a href="#appplication_status" class="w3-bar-item w3-button">Check Application</a>
                     </div>
-                </div>
-                <a href="#" class="w3-bar-item w3-button w3-hide-small">ABOUT</a>
+                </div> -->
+                <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small">ABOUT</a> -->
                 <a href="logout.php" class="w3-bar-item w3-button w3-hide-small">LOGOUT</a>
             </div>
         <!--<a href="javascript:void(0)" class="w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>-->
