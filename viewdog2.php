@@ -17,7 +17,7 @@ $dogPic2 = "";
 
 if(isset($_REQUEST['dogid'])){
     $dogID = $_REQUEST['dogid'];
-    echo $dogID;
+    //echo $dogID;
 
     if(isset($_SESSION["dogList"])){
         $dogArray = $_SESSION["dogList"];
@@ -47,7 +47,7 @@ if(isset($_REQUEST['dogid'])){
 <html>
 <body>
 
-<div class="w3-container" style="margin-top:40px;">
+<div class="w3-container" style="margin-top:60px;">
 
     <div class="w3-container">
         <img src=<?php echo $dogPic1?> height="300" width="300" alt="Image 1" style="border-radius: 50%;">

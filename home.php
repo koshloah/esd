@@ -7,7 +7,6 @@ $data = json_decode($json);
 
 $randomDogFact = "";
 if($data != false){
-  var_dump($data->facts);
   $randomDogFact = $data->facts[0];
 }
 else{

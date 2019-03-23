@@ -1,4 +1,45 @@
 <?php
+    session_start();
+
+    echo "
+    <html>
+        <head>
+            <link rel='stylesheet' href='https://www.w3schools.com/w3css/4/w3.css'>
+            <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+            <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+        </head>
+        <body>
+            <div style='text-align:center'>
+                <div class='w3-display w3-margin-top w3-center'>
+                    <h1 class='w3-xxlarge w3-text'><span class='w3-hide-small w3-text-'><span class='w3-padding w3-white w3-opacity-min'><b><i class='fas fa-dog'></i></b> A<b>dog</b>tion <i class='fas fa-home'></i></span></h1></span>
+                </div>
+
+                <img src='images/load2.gif' height='250' width='250' style='border-radius: 50%;'>
+                <h4>Please wait while we redirect you to a secure payment site.</h4>
+            </div>
+        </body>
+    </html>";
+
+    //var_dump($_REQUEST);
+    $readyToProceed = "no";
+    if(isset($_REQUEST["adoptBtn"])){
+        if(isset($_REQUEST["firstName"]) && isset($_REQUEST["lastName"]) && isset($_REQUEST["address"]) && isset($_REQUEST["postalCode"]) 
+            && isset($_REQUEST["email"]) && isset($_REQUEST["phoneNumber"]) && isset($_REQUEST["reason"]) && isset($_REQUEST["dogID"])){
+            
+            $_SESSION["firstName"] = $_REQUEST["firstName"];
+            $_SESSION["lastName"] = $_REQUEST["lastName"];
+            $_SESSION["address"] = $_REQUEST["address"];
+            $_SESSION["postalCode"] = $_REQUEST["postalCode"];
+            $_SESSION["email"] = $_REQUEST["email"];
+            $_SESSION["phoneNumber"] = $_REQUEST["phoneNumber"];
+            $_SESSION["reason"] = $_REQUEST["reason"];
+            $_SESSION["dogID"] = $_REQUEST["dogID"];
+            
+            $readyToProceed = "yes";
+        } 
+    }
+
+
 
     /*$url = "http://localhost/esd/home.php";
     $ch = curl_init();
@@ -55,12 +96,12 @@
 
         $transactionid = $output_array['PAYMENTINFO_0_TRANSACTIONID'];
 
-        echo $transactionid;
-        echo "<pre>";
-        var_dump($output_array);
-        echo "</pre>";
+        // echo $transactionid;
+        // echo "<pre>";
+        // var_dump($output_array);
+        // echo "</pre>";
         
-        //header("Location: paymentcomplete.php?transactionID=$transactionid");
+        header("Location: paymentcomplete.php?transactionID=$transactionid");
     }
     else{
         $baseurl = 'https://api-3t.sandbox.paypal.com/nvp'; //sandbox
@@ -91,12 +132,15 @@
         parse_str($output_str,$output_array);
         $ack = $output_array['ACK'];
         $token = (!empty($output_array['TOKEN'])) ? $output_array['TOKEN'] : '';
-        echo $token."<br>";
-        echo $ack."<br>";
+        //echo $token."<br>";
+        //echo $ack."<br>";
         $redirecturl = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=$token"; //sandbox
 
-        echo $redirecturl."<br>";;
-        header("Location: $redirecturl");
+        //echo $redirecturl."<br>";;
+        if($readyToProceed == "yes"){
+            header("refresh:1; url=$redirecturl");
+        }
+        
 
         //$redirecturl = "https://www.paypal.com/incontext?token=$token"; //live
     }
