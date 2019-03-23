@@ -1,6 +1,47 @@
 <?php
     session_start();
 
+    //var_dump($_REQUEST);
+    $readyToProceed = "no";
+    if(isset($_REQUEST["adoptBtn"])){
+        if(isset($_REQUEST["firstName"]) && isset($_REQUEST["lastName"]) && isset($_REQUEST["address"]) && isset($_REQUEST["postalCode"]) 
+            && isset($_REQUEST["email"]) && isset($_REQUEST["phoneNumber"]) && isset($_REQUEST["reason"]) && isset($_REQUEST["dogID"])){
+            
+            $entered_email = $_REQUEST["email"];
+            $dogID = $_REQUEST["dogID"];
+            $url = "http://LAPTOP-LYJK:8081/getalladoptionapplications";
+            $json = file_get_contents($url);
+            $data = json_decode($json);
+
+            $_SESSION["firstName"] = $_REQUEST["firstName"];
+            $_SESSION["lastName"] = $_REQUEST["lastName"];
+            $_SESSION["address"] = $_REQUEST["address"];
+            $_SESSION["postalCode"] = $_REQUEST["postalCode"];
+            $_SESSION["email"] = $_REQUEST["email"];
+            $_SESSION["phoneNumber"] = $_REQUEST["phoneNumber"];
+            $_SESSION["reason"] = $_REQUEST["reason"];
+            $_SESSION["dogID"] = $_REQUEST["dogID"];
+        
+            if($data != false){
+                $applications = $data->Application;
+                foreach($applications as $eachApplication){
+                    if($eachApplication->email == $entered_email){
+                        header("Location: adoptionform.php?dogID=$dogID&message=DE");
+                        exit;
+                    }
+                }
+                //var_dump($data->Application);
+            }
+            else{
+                //header("Location: home.php");
+            }
+            
+            $readyToProceed = "yes";
+        } 
+    }
+
+    
+
     echo "
     <html>
         <head>
@@ -20,24 +61,7 @@
         </body>
     </html>";
 
-    //var_dump($_REQUEST);
-    $readyToProceed = "no";
-    if(isset($_REQUEST["adoptBtn"])){
-        if(isset($_REQUEST["firstName"]) && isset($_REQUEST["lastName"]) && isset($_REQUEST["address"]) && isset($_REQUEST["postalCode"]) 
-            && isset($_REQUEST["email"]) && isset($_REQUEST["phoneNumber"]) && isset($_REQUEST["reason"]) && isset($_REQUEST["dogID"])){
-            
-            $_SESSION["firstName"] = $_REQUEST["firstName"];
-            $_SESSION["lastName"] = $_REQUEST["lastName"];
-            $_SESSION["address"] = $_REQUEST["address"];
-            $_SESSION["postalCode"] = $_REQUEST["postalCode"];
-            $_SESSION["email"] = $_REQUEST["email"];
-            $_SESSION["phoneNumber"] = $_REQUEST["phoneNumber"];
-            $_SESSION["reason"] = $_REQUEST["reason"];
-            $_SESSION["dogID"] = $_REQUEST["dogID"];
-            
-            $readyToProceed = "yes";
-        } 
-    }
+    
 
 
 

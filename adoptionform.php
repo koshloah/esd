@@ -3,8 +3,9 @@
 require_once "include/common.php";
 
 $dogID = "";
+$emailNoDuplicate = "";
 
-if(isset($_REQUEST["submitBtn"])){
+//if(isset($_REQUEST["submitBtn"])){
     if(isset($_REQUEST["dogID"])){
         $dogID = $_REQUEST["dogID"];
 
@@ -21,7 +22,7 @@ if(isset($_REQUEST["submitBtn"])){
             header("Location: adopt-view.php");
         }
     }
-}
+//}
 
 
 
@@ -40,25 +41,26 @@ if(isset($_REQUEST["submitBtn"])){
     <hr>
     <form action="payment.php" method="post">
         <b>First Name:</b>
-        <input class="w3-input w3-border" type="text" id="firstName" name="firstName" style="width:20%" required>
+        <input class="w3-input w3-border" type="text" id="firstName" name="firstName" style="width:20%" value="<?php if(isset($_SESSION["firstName"])){ echo $_SESSION["firstName"]; }?>" required>
         <br>
         <b>Last Name:</b>
-        <input class="w3-input w3-border" type="text" id="lastName" name="lastName" style="width:20%" required>
+        <input class="w3-input w3-border" type="text" id="lastName" name="lastName" style="width:20%" value="<?php if(isset($_SESSION["lastName"])){ echo $_SESSION["lastName"]; }?>" required>
         <br>
         <b>Address:</b>
-        <textarea rows="3" cols="40" class="w3-input w3-border" type="text" id="address" name="address" style="width:30%" required></textarea>
+        <textarea rows="3" cols="40" class="w3-input w3-border" type="text" id="address" name="address" style="width:30%" required><?php if(isset($_SESSION["address"])){ echo $_SESSION["address"]; }?></textarea>
         <br>
         <b>Postal Code:</b>
-        <input class="w3-input w3-border" type="text" id="postalCode" name="postalCode" style="width:15%" required>
+        <input class="w3-input w3-border" type="text" id="postalCode" name="postalCode" style="width:15%" value="<?php if(isset($_SESSION["postalCode"])){ echo $_SESSION["postalCode"]; }?>" required>
         <br>
         <b>Email:</b>
-        <input class="w3-input w3-border" type="text" id="email" name="email" style="width:25%" required>
+        <input onchange="emailCheck()" class="w3-input w3-border" type="text" id="email" name="email" style="width:25%; <?php if(isset($_REQUEST["message"])){ echo 'border:1px solid red !important';} ?>" value="<?php if(isset($_SESSION["email"])){ echo $_SESSION["email"]; }?>" <?php if(isset($_REQUEST["message"])){echo "autofocus";} ?> required>
+        <?php if(isset($_REQUEST["message"])){ echo "<font id='errorMsg' color='red'>An adoption application was submitted by this email.</font><br id='errorMsgBR'>";} ?>
         <br>
         <b>Phone Number:</b>
-        <input class="w3-input w3-border" type="text" id="phoneNumber" name="phoneNumber" style="width:20%" required>
+        <input class="w3-input w3-border" type="text" id="phoneNumber" name="phoneNumber" style="width:20%" value="<?php if(isset($_SESSION["phoneNumber"])){ echo $_SESSION["phoneNumber"]; }?>" required>
         <br>
         <b>Why do you want to adopt <?php echo $dogName; ?>?</b>
-        <textarea rows="7" cols="50" class="w3-input w3-border" id="reason" name="reason" placeholder="Reason" style="width:100%" required></textarea>
+        <textarea rows="7" cols="50" class="w3-input w3-border" id="reason" name="reason" placeholder="Reason" style="width:100%" required><?php if(isset($_SESSION["reason"])){ echo $_SESSION["reason"]; }?></textarea>
         <p><b>Note:</b> To ensure our dogs are not adopted on impulse, a non-refundable application fee of <b>$2000.00</b> will be imposed.</p>
         
         <button class="w3-button w3-black" type="submit" name="adoptBtn">Proceed To Pay <i class="fa fa-paw"></i></button>
@@ -94,10 +96,19 @@ printErrors();
         
         document.getElementById("reason").value = reason;
 
-
-
+        
 
     }
+
+    function emailCheck(){
+        document.getElementById("email").style.border = "1px solid black";
+        document.getElementById("errorMsg").style.display = "none";
+        document.getElementById("errorMsgBR").style.display = "none";
+    }
+
+    
+    
+
 
 </script>
 

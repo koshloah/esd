@@ -1,4 +1,5 @@
 <?php
+
 require_once "include/common.php";
 
 $dogName = "";
@@ -16,7 +17,7 @@ $dogPic2 = "";
 
 if(isset($_REQUEST['dogid'])){
     $dogID = $_REQUEST['dogid'];
-    echo $dogID;
+    //echo $dogID;
 
     if(isset($_SESSION["dogList"])){
         $dogArray = $_SESSION["dogList"];
@@ -28,9 +29,9 @@ if(isset($_REQUEST['dogid'])){
                 $dogSize = $eachDog->size;
                 $dogSex = $eachDog->sex;
                 $dogStatus = $eachDog->status;
-                $dogAltered = $eachDog->altered;
-                $dogHasShots = $eachDog->hasShots;
-                $dogHouseTrained = $eachDog->houseTrained;
+                $dogAltered = ucfirst($eachDog->altered);
+                $dogHasShots = ucfirst($eachDog->hasShots);
+                $dogHouseTrained = ucfirst($eachDog->houseTrained);
                 $dogDescription = $eachDog->description;
                 $dogPic1 = $eachDog->pic1;
                 $dogPic2 = $eachDog->pic2;
@@ -41,71 +42,17 @@ if(isset($_REQUEST['dogid'])){
         header("Location: adopt-view.php");
     }
 }
-
 ?>
-
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="stylesheet" href="viewdogcss.css">
-    <style>
-    .previous {
-    background-color: #f1f1f1;
-    color: black;
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 16px;
-    }
-
-    .next {
-    background-color: #f1f1f1;
-    color: black;
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 16px;
-    }
-
-    .previous:hover{
-        background-color: #ddd;
-        color: black; 
-    }
-
-    .next:hover{
-        background-color: #ddd;
-        color: black; 
-    }
-    </style>
-</head>
 <body>
 
-<div class="w3-container" id="appplication_status" style="margin-top:0px;">
-    <div class="w3-container w3-padding-32" id="about">
-        <div id="gallerywrapper">
-            <div id="gallery">
-                <div id="pic1">
-                    <img src=<?php echo $dogPic1?> height="350" width="500" alt="Image 1">
-                    <!-- <a class="previous" href="#pic5">&lt;</a>
-                    <a class="next" href="#pic2">&gt;</a> -->
-                    <div style = "margin-top:0px;">
-                        <a href="#pic2" class="previous">&laquo; Previous</a>
-                        <a href="#pic2" class="next">Next &raquo;</a>
-                    </div>
-                    <!-- <h1><?php echo $dogName; ?></h1> -->
-                    <!--<p>Text of image 1.</p>-->
-                </div>
-                <div id="pic2">
-                    <img src=<?php echo $dogPic2?> height="350" width="500" alt="Image 2">
-                    <div style = "margin-top:0px;">
-                        <a href="#pic1" class="previous">&laquo; Previous</a>
-                        <a href="#pic1" class="next">Next &raquo;</a>
-                    </div>
-                    <!-- <h1><?php echo $dogName; ?></h1> -->
-                    <!--<p>Text of image 2.</p>-->
-                </div>
-            </div>
-        </div>
-        <!-- <h1 class="w3-border-bottom w3-border-light-grey w3-padding-16"><?php echo $dogName; ?></h1> -->
-        <table id="tableDisplay">
+<div class="w3-container" style="margin-top:60px;">
+
+    <div class="w3-container">
+        <img src=<?php echo $dogPic1?> height="300" width="300" alt="Image 1" style="border-radius: 50%;">
+        <hr>
+        <table id="tableDisplay" style="margin-top:-30px;">
             <tr>
                 <td colspan='2'><h1><b><?php echo $dogName; ?></b></h1></td>
             </tr>
@@ -144,21 +91,20 @@ if(isset($_REQUEST['dogid'])){
             <tr>
                 <td colspan='2'><?php echo $dogDescription; ?></td>
             </tr>
-            <tr>
-                <td><button class="w3-button w3-black w3-section" type="submit" name="submitBtn">Adopt</button></td>
-            </tr>
-           
+                
         </table>
-            
+        <form action="adoptionform.php" method="GET">
+            <!-- <img src=<?php echo $dogPic2?> height="300" width="300" alt="Image 1" style="border-radius: 15px;"> -->
+            <input type="text" name="dogID" value="<?php echo $dogID; ?>" readonly hidden>
+            <button class="w3-button w3-black w3-section" type="submit">Adopt <?php echo $dogName; ?> <i class="fa fa-paw"></i></button>
+        </form>
+        
 
     </div>
-
-
-
-
-
-
-
+    
+    <?php
+    printErrors();
+    ?>
 
 <!-- End page content -->
 </div>

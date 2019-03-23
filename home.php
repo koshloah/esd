@@ -185,7 +185,7 @@ else{
         echo "<div class='w3-col l3 m6 w3-margin-bottom'>
             <div class='w3-display-container'>
                 <div class='w3-display-bottomleft w3-green w3-padding'>$eachAvailableDog->name, $availableStatus</div>
-                <a href='viewdog2.php?dogid=$eachAvailableDog->id'><img src='$eachAvailableDog->pic1' style='width:100%; height:280px; '></a>
+                <a href='viewdog.php?dogid=$eachAvailableDog->id'><img src='$eachAvailableDog->pic1' style='width:100%; height:280px; '></a>
             </div>
         </div>";
       }
