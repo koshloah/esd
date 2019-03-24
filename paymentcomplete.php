@@ -39,7 +39,7 @@ if(isset($_REQUEST["subscribeBtn"])){
                         //var_dump($fourthstdClassObject["username"]);
                     }
                     else{
-                        $displayMessage = "Subscription unsuccessful, ensure you have completed Step 1 and entered a valid Telegram ID.";
+                        $displayMessage = "<b>Subscription unsuccessful</b>, ensure you have completed <b>Step 1</b> - <b>Step 2</b>, and entered a <b>valid</b> Telegram ID.";
                     }
                 }
 
@@ -53,7 +53,7 @@ if(isset($_REQUEST["subscribeBtn"])){
                     $telegramResponse = file_get_contents($telegramurl);
                     $decodedTelegramResponse = json_decode($telegramResponse);
                     
-                    $displayMessage = "Subscription successful, a confirmation message has been sent to @$telegramID.";
+                    $displayMessage = "<b>Subscription successful</b>, a confirmation message has been sent to <b>@$telegramID</b> on Telegram.";
                     //header("Location: $url");
                     //var_dump($decodedTelegramResponse);
                 }
@@ -142,25 +142,29 @@ else{
         <h1>Transaction Successful</h1>
 
         <p>Adoption Application ID: <b><?php echo $transactionID; ?></b></p>
-        You can check the status of your adoption application using this Adoption Application ID <a href="adoptionstatus.php"><u>here</u></a>.
+        You can check the status of your adoption application using this Adoption Application ID <a href="adoptionstatus.php"><u><b>here</b></u></a>.
         <hr>
         Alternatively, if you wish to be notified of the adoption application outcome through our notification services, follow these steps:
         <br>
         <br>
         <span class="w3-tag w3-black">Step 1</span> 
         <div class="w3-container w3-white">
-            <p>Subscribe to our Telegram notification service <a href="https://telegram.me/Outcome_notification_bot" target="_blank"><u>here</u></a>.</p>
+            <p>Subscribe to our Telegram notification service(@Outcome_notification_bot) <a href="https://telegram.me/Outcome_notification_bot" target="_blank"><u><b>here</b></u></a>.</p>
         </div>
         <span class="w3-tag w3-black">Step 2</span> 
         <div class="w3-container w3-white">
+            <p>Press <b>/start</b>.</p>
+        </div>
+        <span class="w3-tag w3-black">Step 3</span> 
+        <div class="w3-container w3-white">
             <form action="paymentcomplete.php" method="POST">
-                <p>Next, enter your Email and Telegram ID below to get notified of the outcome of your adoption application.</p>
+                <p>Enter your Email and Telegram ID below to get notified of the outcome of your adoption application.</p>
                 <p><input class="w3-input w3-border" type="text" placeholder="Enter email" name="email" style="width: 25%" value="<?php if(!empty($email)){ echo $email;}?>" required></p>
                 <p><input class="w3-input w3-border" type="text" placeholder="Enter Telegram ID" name="telegramID" style="width: 20%" value="<?php if(!empty($telegramID)){ echo $telegramID;}?>" required></p>
                 <p><button class="w3-button w3-black" type="submit" name="subscribeBtn">Submit <i class="fa fa-paper-plane"></i></button></p>
                 <p><input class="w3-input w3-border" type="hidden" name="transactionID" style="width: 20%" <?php if(isset($_REQUEST["transactionID"])){echo "value='$transactionID'";} ?>></p>
             </form>
-            <?php echo $displayMessage; ?>
+            <p style="margin-bottom:25px;"><?php echo $displayMessage; ?></p>
         </div>
         <!-- Subscribe -->
         <!-- <div class="w3-white w3-margin">
