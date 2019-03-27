@@ -58,7 +58,9 @@ if(isset($_REQUEST["subscribeBtn"])){
                     //var_dump($decodedTelegramResponse);
                 }
                 else{
-                    $displayMessage = "Here: No chat IDs available.";
+                    $displayMessage = "<b>Subscription unsuccessful</b>, ensure you have completed <b>Step 1</b> - <b>Step 2</b>, and entered a <b>valid</b> Telegram ID.";
+                    //No recent interaction with the telegram bot
+                    //$displayMessage = "No chat IDs available.";
                 }
 
             }
@@ -94,7 +96,7 @@ else{
                 
                 curl_setopt($ch, CURLOPT_URL, 'http://LAPTOP-LYJK:8081/newadoptionapplication');
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, "{  \n   \"ApplicationID\": \"$transactionID\",  \n   \"firstName\": \"$firstName\",  \n   \"lastName\": \"$lastName\",  \n   \"address\": \"$address\",  \n   \"postalCode\": \"$postalCode\",  \n   \"email\": \"$email\",  \n   \"phoneNo\": \"$phoneNumber\",  \n   \"reason\": \"$reason\",  \n   \"dogID\": \"$dogID\",  \n   \"application_Status\": \"pending\",  \n   \"payment_Status\": \"paid\"  \n }");
+                curl_setopt($ch, CURLOPT_POSTFIELDS, "{  \n   \"ApplicationID\": \"$transactionID\",  \n   \"firstName\": \"$firstName\",  \n   \"lastName\": \"$lastName\",  \n   \"address\": \"$address\",  \n   \"postalCode\": \"$postalCode\",  \n   \"email\": \"$email\",  \n   \"phoneNo\": \"$phoneNumber\",  \n   \"reason\": \"$reason\",  \n   \"dogID\": \"$dogID\",  \n   \"application_Status\": \"Pending\",  \n   \"payment_Status\": \"Paid\"  \n }");
                 curl_setopt($ch, CURLOPT_POST, 1);
             
                 $headers = array();

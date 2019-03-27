@@ -16,6 +16,19 @@ if(isset($_REQUEST["submitBtn"])){
     $data = json_decode($json);
     if(!empty($data)){
       $application_Status = $data->application_Status;
+      $dogID = $data->dogID;
+
+      if(!empty($dogID)){
+        $url = "http://LAPTOP-LYJK:8080/dog/".$dogID;
+        $json = file_get_contents($url);
+        $data = json_decode($json);
+  
+        if($data != false){
+            $dogName = $data->name;
+            $dogPic = $data->pic1;  
+        }
+      }
+      
     }
 
     /*["ApplicationID"]
@@ -39,25 +52,53 @@ if(isset($_REQUEST["submitBtn"])){
 <!DOCTYPE html>
 <html>
 <body>
+<div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
 
 <div class="w3-container" id="appplication_status" style="margin-top:30px;">
 
   <!-- Application Status Section -->
   <div class="w3-container" id="appplication_status">
-    <h1 class="w3-border-bottom w3-border-light-grey w3-padding-16">Check Application Status</h1>
-    <p>Enter your application ID to check application status</p>
+    <h1 class="w3-border-bottom w3-border-light-grey w3-padding-16"><b>Check Application Status</b></h1>
+    <p>Enter your application ID to check the application status</p>
     <form action="adoptionstatus.php" method="POST">
-      <input class="w3-input w3-border" type="text" name = "applicationID" placeholder="Application ID" required>
+      <input class="w3-input w3-border" type="text" name = "applicationID" placeholder="Application ID" value="<?php if(isset($_REQUEST["applicationID"])){ echo $_REQUEST["applicationID"]; }?>" required>
       <button class="w3-button w3-black w3-section" name="submitBtn" type="submit">
           SUBMIT <i class="fa fa-paper-plane"></i>
       </button>
     </form>
     <?php
       if($application_Status != ""){
-        echo "Your adoption application is: <b>$application_Status</b>.";
+        if($application_Status == "Approved"){
+          echo "<p style='margin-top:-20px;'><h4><b>Congratulations!</b> Your Adoption Application: $applicationID has been <b>$application_Status</b>.</h4></p>
+                <p><h4>You will be contacted for the remaining adoption process of $dogName shortly.</h4></p>
+                <p><img src=$dogPic height='300' width='300' style='border-radius: 15px;'></p>
+                <div class='fb-share-button' 
+                  data-href='$dogPic' 
+                  data-layout='button' data-size='large'>
+                </div>
+                
+                <br><br>";
+                // <blockquote class='twitter-tweet'><p lang='en' dir='ltr'>Sunsets don&#39;t get much better than this one over <a href='https://twitter.com/GrandTetonNPS?ref_src=twsrc%5Etfw'>@GrandTetonNPS</a>. <a href='https://twitter.com/hashtag/nature?src=hash&amp;ref_src=twsrc%5Etfw'>#nature</a> <a href='https://twitter.com/hashtag/sunset?src=hash&amp;ref_src=twsrc%5Etfw'>#sunset</a> <a href='http://t.co/YuKy2rcjyU'>pic.twitter.com/YuKy2rcjyU</a></p>&mdash; US Department of the Interior (@Interior) <a href='https://twitter.com/Interior/status/463440424141459456?ref_src=twsrc%5Etfw'>May 5, 2014</a></blockquote> <script async src='https://platform.twitter.com/widgets.js' charset='utf-8'></script>
+                
+                // <a href='$dogPic' class='twitter-share-button' data-show-count='false'>Tweet</a><script async src='$dogPic' charset='utf-8'></script>
+        }
+        else if($application_Status == "Rejected"){
+          echo "<p style='margin-top:-20px;'><h4>Unfortunately, your Adoption Application: $applicationID has been <b>$application_Status</b>.</h4><h4>Check out the other dogs available for adoption <a href='adopt-view.php'><u>here</u></a>.</h4></p>";
+        }
+        else if($application_Status == "Pending"){
+          echo "<p style='margin-top:-20px;'><h4>Your Adoption Application: $applicationID is <b>$application_Status</b>, a notification will be sent to you via Email and Telegram once there is an outcome.</h4></p>";
+        }
+        
       }
       else if($submitButtonPressed == "yes"){
-        echo "<b>Application ID does not exist.</b>";
+        echo "<p style='margin-top:-20px;'><h4><b>Adoption Application: $applicationID does not exist.</b></h4></p>";
       }
     ?>
   </div>

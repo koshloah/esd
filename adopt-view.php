@@ -96,7 +96,7 @@ else{
 <body>
 <div class="w3-content w3-padding" style="max-width:1564px">
     <div class="w3-container" style="margin-top:40px;">
-        <h1>Adopt, Don't Shop!</h1>
+        <h1><b>Adopt, Don't Shop!</b></h1>
         <form action="adopt.php" method="post">
             <table>
                 <tr>
@@ -150,7 +150,7 @@ else{
                         echo "<div class='w3-col l3 m6 w3-margin-bottom'>
                             <div class='w3-display-container'>
                                 <div class='w3-display-bottomleft w3-green w3-padding'>$eachDog->name, $availableStatus</div>
-                                <a href='viewdog.php?dogid=$eachDog->id'><img src='$eachDog->pic1' style='width:280px; height:280px; border-radius: 0%;' id='img$counter'> </a>
+                                <a href='viewdog.php?dogid=$eachDog->id'><img src='$eachDog->pic1' style='width:280px; height:280px; border-radius: 4%;' id='img$counter'> </a>
                             </div>
                         </div>";
                     }
