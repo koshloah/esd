@@ -57,7 +57,13 @@ if(isset($_REQUEST["subscribeBtn"])){
                     //header("Location: $url");
                     //var_dump($decodedTelegramResponse);
                 }
+                else{
+                    $displayMessage = "Here: No chat IDs available.";
+                }
 
+            }
+            else{
+                $displayMessage = "No chat IDs available.";
             } 
         }
         else{
