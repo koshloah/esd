@@ -77,7 +77,7 @@ if(isset($_REQUEST["submitBtn"])){
       if($application_Status != ""){
         if($application_Status == "Approved"){
           echo "<p style='margin-top:-20px;'><h4><b>Congratulations!</b> Your Adoption Application: $applicationID has been <b>$application_Status</b>.</h4></p>
-                <p><h4>You will be contacted for the remaining adoption process of $dogName shortly.</h4></p>
+                <p><h4>You will be contacted to complete the remaining adoption process of $dogName shortly.</h4></p>
                 <p><img src=$dogPic height='300' width='300' style='border-radius: 15px;'></p>
                 <div class='fb-share-button' 
                   data-href='$dogPic' 
@@ -93,12 +93,12 @@ if(isset($_REQUEST["submitBtn"])){
           echo "<p style='margin-top:-20px;'><h4>Unfortunately, your Adoption Application: $applicationID has been <b>$application_Status</b>.</h4><h4>Check out the other dogs available for adoption <a href='adopt-view.php'><u>here</u></a>.</h4></p>";
         }
         else if($application_Status == "Pending"){
-          echo "<p style='margin-top:-20px;'><h4>Your Adoption Application: $applicationID is <b>$application_Status</b>, a notification will be sent to you via Email and Telegram once there is an outcome.</h4></p>";
+          echo "<p style='margin-top:-20px;'><h4>Your Adoption Application: $applicationID is <b>$application_Status</b>.</h4><h4>A notification will be sent to your Email and Telegram once there is an outcome.</h4></p>";
         }
         
       }
       else if($submitButtonPressed == "yes"){
-        echo "<p style='margin-top:-20px;'><h4><b>Adoption Application: $applicationID does not exist.</b></h4></p>";
+        echo "<p style='margin-top:-20px;'><h4>Adoption Application: $applicationID <b>does not exist</b>.</h4></p>";
       }
     ?>
   </div>
