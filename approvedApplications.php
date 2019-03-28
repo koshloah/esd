@@ -125,7 +125,7 @@ else{
                                     $applicationStatus = ucfirst($eachApplication->application_Status);
                                     //var_dump($allApplications);
                                     echo "
-                                    <tr>
+                                    <tr class='w3-hover-opacity'>
                                         <td>$eachApplication->ApplicationID</td>
                                         <td>$eachApplication->firstName $eachApplication->lastName</td>
                                         <td>$eachApplication->email</td>

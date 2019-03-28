@@ -117,7 +117,7 @@ else{
                                 foreach($pendingApplicationArray as $eachApplication){
                                     $applicationStatus = ucfirst($eachApplication->application_Status);
                                     echo "
-                                    <tr>
+                                    <tr class='w3-hover-opacity'>
                                         <td>$eachApplication->ApplicationID</td>
                                         <td>$eachApplication->firstName $eachApplication->lastName</td>
                                         <td>$eachApplication->email</td>

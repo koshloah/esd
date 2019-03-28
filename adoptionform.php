@@ -36,7 +36,7 @@ $emailNoDuplicate = "";
 
 
     <!-- <img src='images/load2.gif' height="250" width="250" alt="Image 1" style="border-radius: 50%;"> -->
-    <img src=<?php echo $dogPic;?> height="300" width="300" alt="Image 1" style="border-radius: 50%;">
+    <img src=<?php echo $dogPic;?> height="300" width="300" alt="Image 1" style="border-radius: 4%;">
     <h2><?php echo $dogName . "'s"; ?> Adoption Form</h2>
     <hr>
     <form action="payment.php" method="post">
