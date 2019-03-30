@@ -1,6 +1,7 @@
 <?php
 
 require_once "include/common.php";
+require_once "include/servicesURL.php";
 //require_once "include/DogDAO.php";
 
 /*$dogdb = new DogDAO();
@@ -46,7 +47,7 @@ if(isset($_SESSION["dogList"])){
 }
 // retrieve from dog service if session is empty
 else{
-    $url = "http://LAPTOP-LYJK:8080/dogs";
+    $url = $dogManagementServiceURL;
     $json = file_get_contents($url);
     $data = json_decode($json);
 
@@ -133,7 +134,7 @@ else{
                 echo "
                     <div class='w3-display-container' style='margin-top:-10px;'>
                         <h4><b>We currently do not have any <u>$selectedDogBreed</u> dogs.</b></h4>
-                        <h5>Would you like to subscribe to our notification service? You will receive a notification when a $selectedDogBreed is available.</h5>
+                        <h5>Would you like to subscribe to our Adogtion Newsletter Service? You will receive an email of the list of latest available dogs.</h5>
                         <form action='http://www.google.com'>
                             <b>Email:</b><input class='w3-input w3-border' type='text' name='email' placeholder='abc@mail.com' required>
                             <td><button class='w3-button w3-black w3-section' type='submit' name='subscriptionButton'>Subscribe <i class='fa fa-paw'></i></button></td>

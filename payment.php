@@ -1,4 +1,6 @@
 <?php
+
+    require_once "include/servicesURL.php";
     session_start();
 
     //var_dump($_REQUEST);
@@ -9,7 +11,7 @@
             
             $entered_email = $_REQUEST["email"];
             $dogID = $_REQUEST["dogID"];
-            $url = "http://LAPTOP-LYJK:8081/getalladoptionapplications";
+            $url = $dogAdoptionApplicationURL;
             $json = file_get_contents($url);
             $data = json_decode($json);
 
@@ -74,7 +76,7 @@
     curl_close($ch);*/
 
     /* paypal CURL syntax
-    curl https://api-3t.sandbox.paypal.com/nvp \
+    curl $paypalURL \
     -s \
     --insecure \
     -d USER YourUserID \
@@ -94,7 +96,7 @@
         $payerid = urlencode($_GET['PayerID']);
         $token = urlencode($_GET['token']);
         
-        $baseurl = 'https://api-3t.sandbox.paypal.com/nvp'; //sandbox
+        $baseurl = $paypalURL; //sandbox
         //$baseurl = 'https://api-3t.paypal.com/nvp'; //live
         $username = urlencode('esdg1t6_api1.gmail.com');
         $password = urlencode('KC23C5EBXBXDZBR3');
@@ -128,7 +130,7 @@
         header("Location: paymentcomplete.php?transactionID=$transactionid");
     }
     else{
-        $baseurl = 'https://api-3t.sandbox.paypal.com/nvp'; //sandbox
+        $baseurl = $paypalURL; //sandbox
         //$baseurl = 'https://api-3t.paypal.com/nvp'; //live
         $username = urlencode('esdg1t6_api1.gmail.com');
         $password = urlencode('KC23C5EBXBXDZBR3');

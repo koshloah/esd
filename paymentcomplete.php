@@ -1,5 +1,6 @@
 <?php
 require_once "include/common.php";
+require_once "include/servicesURL.php";
 
 $firstName = "";
 $lastName = "";
@@ -22,7 +23,7 @@ if(isset($_REQUEST["subscribeBtn"])){
         $transactionID = $_REQUEST["transactionID"];
 
         if(!empty($transactionID)){
-            $url = "https://api.telegram.org/bot875776528:AAEpUJaLS8FhzpehL8JLlTCmgsghhUgTOic/getUpdates";
+            $url = $telegramSubscribersURL;
             $json = file_get_contents($url);
             $data = json_decode($json);
 
@@ -46,7 +47,7 @@ if(isset($_REQUEST["subscribeBtn"])){
                 if(!empty($telegramChatID)){
                     //echo $telegramChatID;
                     $message = "You have successfully subscribed to Adogtion's Notification Service. Your Adoption Application ID is: $transactionID";
-                    $telegramurl = "https://api.telegram.org/bot875776528:AAEpUJaLS8FhzpehL8JLlTCmgsghhUgTOic/sendMessage";
+                    $telegramurl = $telegramMessageURL;
                     $telegramurl .= "?chat_id=$telegramChatID";
                     $telegramurl .= "&text=$message";
 
@@ -94,9 +95,9 @@ else{
             
                 $ch = curl_init();
                 
-                curl_setopt($ch, CURLOPT_URL, 'http://LAPTOP-LYJK:8081/newadoptionapplication');
+                curl_setopt($ch, CURLOPT_URL, $newDogAdoptionApplicationURL);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, "{  \n   \"ApplicationID\": \"$transactionID\",  \n   \"firstName\": \"$firstName\",  \n   \"lastName\": \"$lastName\",  \n   \"address\": \"$address\",  \n   \"postalCode\": \"$postalCode\",  \n   \"email\": \"$email\",  \n   \"phoneNo\": \"$phoneNumber\",  \n   \"reason\": \"$reason\",  \n   \"dogID\": \"$dogID\",  \n   \"application_Status\": \"Pending\",  \n   \"payment_Status\": \"Paid\"  \n }");
+                curl_setopt($ch, CURLOPT_POSTFIELDS, "{  \n   \"ApplicationID\": \"$transactionID\",  \n   \"firstName\": \"$firstName\",  \n   \"lastName\": \"$lastName\",  \n   \"address\": \"$address\",  \n   \"postalCode\": \"$postalCode\",  \n   \"email\": \"$email\",  \n   \"phoneNo\": \"$phoneNumber\",  \n   \"reason\": \"$reason\",  \n   \"dogID\": \"$dogID\",  \n   \"application_Status\": \"Pending\",  \n   \"payment_Status\": \"Approved\"  \n }");
                 curl_setopt($ch, CURLOPT_POST, 1);
             
                 $headers = array();
@@ -157,7 +158,8 @@ else{
         <br>
         <span class="w3-tag w3-black">Step 1</span> 
         <div class="w3-container w3-white">
-            <p>Subscribe to our Telegram notification service(@Outcome_notification_bot) <a href="https://telegram.me/Outcome_notification_bot" target="_blank"><u><b>here</b></u></a>.</p>
+            <p>Subscribe to our Telegram notification service(<?php echo $telegramBotUsername; ?>) <a href=<?php echo $telegramBotURL; ?> target="_blank"><u><b>here</b></u></a>.</p>
+            <p><img src="images/telebotinfo.jpg></p>
         </div>
         <span class="w3-tag w3-black">Step 2</span> 
         <div class="w3-container w3-white">

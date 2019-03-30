@@ -1,10 +1,10 @@
 <?php
-
 require_once "include/common_staff.php";
+require_once "include/servicesURL.php";
 
 $applicationRetrieveStatus = "";
 
-$url = "http://LAPTOP-LYJK:8081/getalladoptionapplications";
+$url = $dogAdoptionApplicationURL;
 $json = file_get_contents($url);
 $data = json_decode($json);
 

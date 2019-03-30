@@ -1,6 +1,7 @@
 <?php
 
 require_once "include/common.php";
+require_once "include/servicesURL.php";
 
 $dogName = "";
 $dogAge = "";
@@ -35,10 +36,6 @@ if(isset($_REQUEST['dogid'])){
                 $dogDescription = $eachDog->description;
                 $dogPic1 = $eachDog->pic1;
                 $dogPic2 = $eachDog->pic2;
-
-                // $url = "https://api.thedogapi.com/v1/breeds/search?q=".$dogBreed;
-                // $json = file_get_contents($url);
-                // $additionalBreedInfo = json_decode($json);
             }
         }
     }
@@ -94,28 +91,17 @@ if(isset($_REQUEST['dogid'])){
                 <tr>
                     <td colspan='2'><?php echo $dogDescription; ?></td>
                 </tr>
-
-                <?php
-                
-                    // if(!empty($additionalBreedInfo)){
-                    //     foreach($additionalBreedInfo as $eachBreedInfo){
-                    //         var_dump($eachBreedInfo);
-                    //     }
-                    // }
-                ?>
                     
             </table>
             <form action="adoptionform.php" method="GET">
-                <!-- <img src=<?php echo $dogPic2?> height="300" width="300" alt="Image 1" style="border-radius: 15px;"> -->
                 <input type="text" name="dogID" value="<?php echo $dogID; ?>" readonly hidden>
                 <button class="w3-button w3-black w3-section" type="submit">Adopt <?php echo $dogName; ?> <i class="fa fa-paw"></i></button>
             </form>
             
-
         </div>
         
         <?php
-        printErrors();
+            printErrors();
         ?>
 
     <!-- End page content -->

@@ -1,6 +1,6 @@
 <?php
-
 require_once "include/common.php";
+require_once "include/servicesURL.php";
 
 $dogID = "";
 $emailNoDuplicate = "";
@@ -23,9 +23,6 @@ $emailNoDuplicate = "";
         }
     }
 //}
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -33,9 +30,6 @@ $emailNoDuplicate = "";
 <body>
 
 <div class="w3-container" style="margin-top:60px;">
-
-
-    <!-- <img src='images/load2.gif' height="250" width="250" alt="Image 1" style="border-radius: 50%;"> -->
     <img src=<?php echo $dogPic;?> height="300" width="300" alt="Image 1" style="border-radius: 4%;">
     <h2><?php echo $dogName . "'s"; ?> Adoption Form</h2>
     <hr>
@@ -69,10 +63,8 @@ $emailNoDuplicate = "";
         <a onclick="loadForm()"><u>Generate Form Inputs</u></a>
     </form>
     
-    
-    
 <?php
-printErrors();
+    printErrors();
 ?>
 
 <!-- End page content -->
@@ -95,9 +87,6 @@ printErrors();
         // reason += "classified ads. Puppy mills will continue to operate until people stop supporting them. By adopting a pet, you can be certain you aren't giving them a dime.";
         
         document.getElementById("reason").value = reason;
-
-        
-
     }
 
     function emailCheck(){
@@ -105,10 +94,6 @@ printErrors();
         document.getElementById("errorMsg").style.display = "none";
         document.getElementById("errorMsgBR").style.display = "none";
     }
-
-    
-    
-
 
 </script>
 

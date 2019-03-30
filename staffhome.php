@@ -1,10 +1,10 @@
 <?php
-
 require_once "include/common_staff.php";
+require_once "include/servicesURL.php";
 
 $applicationRetrieveStatus = "";
 
-$url = "http://LAPTOP-LYJK:8081/getalladoptionapplications";
+$url = $dogAdoptionApplicationURL;
 $json = file_get_contents($url);
 $data = json_decode($json);
 
@@ -137,7 +137,7 @@ else{
             <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"><b>Popular Dog(s)</b></h3>
             <?php 
                 foreach($mostPopularDog as $eachPopularDogID => $eachPopularDogCount){
-                    $url = "http://LAPTOP-LYJK:8080/dog/".$eachPopularDogID;
+                    $url = $dogManagementGetDogURL.$eachPopularDogID;
                     $json = file_get_contents($url);
                     $data = json_decode($json);
 

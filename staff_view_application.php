@@ -1,10 +1,11 @@
 <?php
 require_once "include/common_staff.php";
+require_once "include/servicesURL.php";
 
 if(isset($_REQUEST["appID"])){
     $redirectedFrom = $_REQUEST["from"]; 
 
-    $url = "http://LAPTOP-LYJK:8081/getadoptionapplication/".$_REQUEST["appID"];
+    $url = $getDogAdoptionApplicationURL.$_REQUEST["appID"];
     $json = file_get_contents($url);
     $data = json_decode($json);
 
@@ -21,7 +22,7 @@ if(isset($_REQUEST["appID"])){
         $dogID = $data->dogID;
         $application_Status = $data->application_Status;
         
-        $url = "http://LAPTOP-LYJK:8080/dog/".$dogID;
+        $url = $dogManagementGetDogURL.$dogID;
         $json = file_get_contents($url);
         $data = json_decode($json);
 
@@ -41,25 +42,31 @@ if(isset($_REQUEST["submitBtn"])){
     if(isset($_REQUEST["selectedApplicationID"]) && isset($_REQUEST["selectedStatus"])){
         $selectedApplicationID = $_REQUEST["selectedApplicationID"];
         $selectedStatus = $_REQUEST["selectedStatus"];
-        $ch = curl_init();
+        
+        // if approved, approve selected application and reject the rest that applied for the same dog
+        if($selectedStatus == "Approved"){
 
-        curl_setopt($ch, CURLOPT_URL, 'http://LAPTOP-LYJK:8081/updateadoptionapplication');
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, "{  \n   \"ApplicationID\": \"$selectedApplicationID\",  \n   \"application_Status\": \"$selectedStatus\",  \n   \"payment_Status\": \"Paid\"  \n }");
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
-    
-    
-        $headers = array();
-        $headers[] = 'Content-Type: application/json';
-        $headers[] = 'Accept: application/json';
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-    
-        $result = curl_exec($ch);
-        if (curl_errno($ch)) {
-            echo 'Error:' . curl_error($ch);
         }
-        curl_close ($ch);
+        
+        else if($selectedStatus == "Pending" || $selectedStatus == "Rejected"){
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, 'http://LAPTOP-LYJK:8081/updateadoptionapplication');
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, "{  \n   \"ApplicationID\": \"$selectedApplicationID\",  \n   \"application_Status\": \"$selectedStatus\",  \n   \"payment_Status\": \"Approved\"  \n }");
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
 
+            $headers = array();
+            $headers[] = 'Content-Type: application/json';
+            $headers[] = 'Accept: application/json';
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        
+            $result = curl_exec($ch);
+            if (curl_errno($ch)) {
+                echo 'Error:' . curl_error($ch);
+            }
+            curl_close ($ch);
+        }
+        
         var_dump($result);
 
         if($_REQUEST["redirectedFrom"]=="home"){
