@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Created with Liquid Studio 2018 (https://www.liquid-technologies.com) -->
+<schema xmlns:tns="outcome" elementFormDefault="qualified" targetNamespace="outcome" xmlns="http://www.w3.org/2001/XMLSchema">
+    <complexType name="Outcome_notification">
+        <sequence>
+            <element name="application_id" type="string" />
+			<element name="email" type="string" />
+			<element name="chat_id" type="int" />
+            <element name="telegram_username" type="string" />
+        </sequence>
+    </complexType>
+    <element name="Outcome_notification" type="tns:Outcome_notification" />
+</schema>
