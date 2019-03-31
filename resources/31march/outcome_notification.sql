@@ -45,7 +45,8 @@ CREATE TABLE IF NOT EXISTS `outcome_notification` (
 
 INSERT INTO `outcome_notification` (`application_id`, `email`, `chat_ID`, `telegram_username`) VALUES
 ('123abc', 'xuesi.sim.2017@sis.smu.edu.sg', 233472680, 'xuesiiii'),
-('321xyz', 'keith.loh.2017@sis.smu.edu.sg', 443941427, 'keithloh');
+('321xyz', 'keith.loh.2017@sis.smu.edu.sg', 205446554, 'keith'),
+('321abc', 'junwei.qiu.2017@sis.smu.edu.sg', 328214303, 'junwei');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
