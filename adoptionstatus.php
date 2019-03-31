@@ -100,7 +100,7 @@ if(isset($_REQUEST["submitBtn"])){
         
       }
       else if($submitButtonPressed == "yes"){
-        echo "<p style='margin-top:-20px;'><h4>Adoption Application: $applicationID <b>does not exist</b>.</h4></p>";
+        echo "<p style='margin-top:-20px;'><h4><span style='font-size: 1em; color: red;'><i class='fas fa-times-circle'></i></span> Adoption Application: $applicationID <b>does not exist</b>.</h4></p>";
       }
     ?>
   </div>

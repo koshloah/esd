@@ -19,6 +19,7 @@ else{
 $dogBreedStatus = "";
 $selectedDogBreed = ""; 
 $uniqueDogBreeds = [];
+$subscriptionMessage = "";
 
 if(isset($_SESSION["dogList"])){
     $allDogs = $_SESSION["dogList"];
@@ -30,8 +31,44 @@ if(isset($_SESSION["dogList"])){
     if(isset($_SESSION["breed"])){
         $selectedDogBreed = $_SESSION["breed"];
 
-        if($selectedDogBreed == "All" || $selectedDogBreed == ""){
+        if(isset($_REQUEST["subscriptionButton"])){
+            if(isset($_REQUEST["email"])){
+                $enteredEmail = $_REQUEST["email"];
 
+                $ch = curl_init();
+
+                curl_setopt($ch, CURLOPT_URL, $newSubscriptionServiceURL);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, "{  \n   \"email\": \"$enteredEmail\"  \n }");
+                curl_setopt($ch, CURLOPT_POST, 1);
+
+                $headers = array();
+                $headers[] = 'Content-Type: application/json';
+                $headers[] = 'Accept: application/json';
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+                $result = curl_exec($ch);
+                if (curl_errno($ch)) {
+                    echo 'Error:' . curl_error($ch);
+                }
+                curl_close ($ch);
+
+                if( strpos( $result, "Duplicate entry" ) !== false) {
+                    // email already exists
+                    $subscriptionMessage = "<h4><b><span style='font-size: 1em; color: red;'><i class='fas fa-times-circle'></i></span> You have already subscribed to Adogtion Newsletter Email Service.</b></h4>";
+                }
+                else{
+                    $subscriptionMessage = "<h4><b><span style='font-size: 1em; color: green;'><i class='fas fa-check-circle'></i></span> You have subscribed to Adogtion Newsletter Email Service.</b></h4>";
+                }
+            }
+        
+        }
+        else{
+            $subscriptionMessage = "";
+        }
+
+        if($selectedDogBreed == "All" || $selectedDogBreed == ""){
+            
         }
         else{
             $filteredDogList = [];
@@ -135,10 +172,11 @@ else{
                     <div class='w3-display-container' style='margin-top:-10px;'>
                         <h4><b>We currently do not have any $selectedDogBreed.</b></h4>
                         <h5>Subscribe to our Adogtion Newsletter Email Service to receive the list of latest available dogs.</h5>
-                        <form action='http://www.google.com'>
-                            <b>Email:</b><input class='w3-input w3-border' type='text' name='email' placeholder='abc@mail.com' required>
+                        <form action='adopt-view.php' method='POST'>
+                            <b>Email:</b><input class='w3-input w3-border' type='email' name='email' placeholder='abc@mail.com' required>
                             <td><button class='w3-button w3-black w3-section' type='submit' name='subscriptionButton'>Subscribe <i class='fa fa-paw'></i></button></td>
                         </form>
+                        $subscriptionMessage
                     </div>";
                     
             }

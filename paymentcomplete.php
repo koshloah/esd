@@ -45,11 +45,11 @@ if(isset($_REQUEST["subscribeBtn"])){
                             //var_dump($fourthstdClassObject["username"]);
                         }
                         else{
-                            $displayMessage = "<b>Subscription unsuccessful</b>, ensure you have completed <b>Step 1</b> - <b>Step 2</b>, and entered a <b>valid</b> Telegram ID.";
+                            $displayMessage = "<span style='font-size: 1em; color: red;'><i class='fas fa-times-circle'></i></span> <b>Subscription unsuccessful</b>, ensure you have completed <b>Step 1</b> - <b>Step 2</b>, and entered a <b>valid</b> Telegram ID.";
                         }
                     }
                     else{
-                        $displayMessage = "Please set a username for your Telegram account.";
+                        $displayMessage = "<span style='font-size: 1em; color: red;'><i class='fas fa-times-circle'></i></span> Please set a username for your Telegram account.";
                     }  
                 }
 
@@ -83,19 +83,19 @@ if(isset($_REQUEST["subscribeBtn"])){
                     
                     $receivedStatus = "yes";
 
-                    $displayMessage = "<b>Subscription successful</b>, a confirmation message has been sent to <b>@$telegramID</b> on Telegram.";
+                    $displayMessage = "<span style='font-size: 1em; color: green;'><i class='fas fa-check-circle'></i></span> <b>Subscription successful</b>, a confirmation message has been sent to <b>@$telegramID</b> on Telegram.";
                     //header("Location: $url");
                     //var_dump($decodedTelegramResponse);
                 }
                 else{
-                    $displayMessage = "<b>Subscription unsuccessful</b>, ensure you have completed <b>Step 1</b> - <b>Step 2</b>, and entered a <b>valid</b> Telegram ID.";
+                    $displayMessage = "<span style='font-size: 1em; color: red;'><i class='fas fa-times-circle'></i></span> <b>Subscription unsuccessful</b>, ensure you have completed <b>Step 1</b> - <b>Step 2</b>, and entered a <b>valid</b> Telegram ID.";
                     //No recent interaction with the telegram bot
                     //$displayMessage = "No chat IDs available.";
                 }
 
             }
             else{
-                $displayMessage = "No chat IDs available.";
+                $displayMessage = "<span style='font-size: 1em; color: red;'><i class='fas fa-times-circle'></i></span> No chat IDs available.";
             } 
         }
         else{

@@ -15,7 +15,7 @@
     $telegramMessageURL = "https://api.telegram.org/bot722076439:AAF036CxIcNrjo_W_zpUYVRNA5J1wYtDgXc/sendMessage";
 
 
-    
+
     /* G1T6 Tibco BW Microservices */
     // retrieve all dogs
     $dogManagementServiceURL = "http://LAPTOP-LYJK:8080/dogs";
@@ -35,5 +35,8 @@
 
     // create outcome notification 
     $outcomeNotificationServiceURL = "http://LAPTOP-LYJK:8082/outcome_notification";
+
+    // create subscription to receive weekly notification of new dog updates 
+    $newSubscriptionServiceURL = "http://LAPTOP-LYJK:8085/subscription";
 
 ?>
