@@ -16,13 +16,17 @@ $telegramChatID = "";
 $telegramID = "";
 $displayMessage = "";
 
+$receivedStatus = "no";
+
 if(isset($_REQUEST["subscribeBtn"])){
-    if(isset($_REQUEST["email"]) && isset($_REQUEST["telegramID"]) && isset($_REQUEST["transactionID"])){
-        $email = $_REQUEST["email"];
+    // if(isset($_REQUEST["email"]) && isset($_REQUEST["telegramID"]) && isset($_REQUEST["transactionID"])){
+    if(isset($_REQUEST["telegramID"]) && isset($_REQUEST["transactionID"])){
+        $email = "adogtion123@gmail.com";
         $telegramID = $_REQUEST["telegramID"];
         $transactionID = $_REQUEST["transactionID"];
+        $receivedStatus = $_REQUEST["receivedStatus"];
 
-        if(!empty($transactionID)){
+        if(!empty($transactionID) && $receivedStatus == "no"){
             $url = $telegramSubscribersURL;
             $json = file_get_contents($url);
             $data = json_decode($json);
@@ -33,15 +37,20 @@ if(isset($_REQUEST["subscribeBtn"])){
                     $secondstdClassObject = get_object_vars($eachresult);
                     $thirdstdClassObject = get_object_vars($secondstdClassObject["message"]);
                     $fourthstdClassObject = get_object_vars($thirdstdClassObject["from"]);
-                    if($fourthstdClassObject["username"] == $telegramID){
-                        $telegramChatID = $fourthstdClassObject["id"];
-                        break;
-                        //var_dump($fourthstdClassObject["id"]);
-                        //var_dump($fourthstdClassObject["username"]);
+                    if(array_key_exists("username",  $fourthstdClassObject)){
+                        if($fourthstdClassObject["username"] == $telegramID){
+                            $telegramChatID = $fourthstdClassObject["id"];
+                            break;
+                            //var_dump($fourthstdClassObject["id"]);
+                            //var_dump($fourthstdClassObject["username"]);
+                        }
+                        else{
+                            $displayMessage = "<b>Subscription unsuccessful</b>, ensure you have completed <b>Step 1</b> - <b>Step 2</b>, and entered a <b>valid</b> Telegram ID.";
+                        }
                     }
                     else{
-                        $displayMessage = "<b>Subscription unsuccessful</b>, ensure you have completed <b>Step 1</b> - <b>Step 2</b>, and entered a <b>valid</b> Telegram ID.";
-                    }
+                        $displayMessage = "Please set a username for your Telegram account.";
+                    }  
                 }
 
                 if(!empty($telegramChatID)){
@@ -53,7 +62,27 @@ if(isset($_REQUEST["subscribeBtn"])){
 
                     $telegramResponse = file_get_contents($telegramurl);
                     $decodedTelegramResponse = json_decode($telegramResponse);
+
+                    $ch = curl_init();
+
+                    curl_setopt($ch, CURLOPT_URL, $outcomeNotificationServiceURL);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, "{  \n   \"application_id\": \"$transactionID\",  \n   \"email\": \"$email\",  \n   \"chat_id\": $telegramChatID,  \n   \"telegram_username\": \"$telegramID\"  \n }");
+                    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+
+                    $headers = array();
+                    $headers[] = 'Content-Type: application/json';
+                    $headers[] = 'Accept: application/json';
+                    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+                    $result = curl_exec($ch);
+                    if (curl_errno($ch)) {
+                        echo 'Error:' . curl_error($ch);
+                    }
+                    curl_close ($ch);
                     
+                    $receivedStatus = "yes";
+
                     $displayMessage = "<b>Subscription successful</b>, a confirmation message has been sent to <b>@$telegramID</b> on Telegram.";
                     //header("Location: $url");
                     //var_dump($decodedTelegramResponse);
@@ -70,8 +99,9 @@ if(isset($_REQUEST["subscribeBtn"])){
             } 
         }
         else{
-            $displayMessage = "Because you refreshed the page, the transaction ID is gone.";
-            //header("Location: logout.php");
+            //$displayMessage = "Because you refreshed the page, the transaction ID is gone/ you have already received a notification.";
+            // submission confirmation already sent
+            header("Location: logout.php");
         }
            
     }
@@ -147,32 +177,34 @@ else{
     <input type="text" id="reason" value="<?php echo $reason; ?>" readonly><br>
     <input type="text" id="dogID" value="<?php echo $dogID; ?>" readonly><br>
     <input type="text" id="ApplicationID" value="<?php echo $transactionID; ?>" readonly><br> -->
-    <div class="w3-container" style="margin-top:40px;">
+    <div class="w3-container" style="margin-top:50px;">
         <h1>Transaction Successful</h1>
 
         <p>Adoption Application ID: <b><?php echo $transactionID; ?></b></p>
         You can check the status of your adoption application using this Adoption Application ID <a href="adoptionstatus.php"><u><b>here</b></u></a>.
         <hr>
-        Alternatively, if you wish to be notified of the adoption application outcome through our notification services, follow these steps:
+        Alternatively, if you wish to be notified of the adoption application outcome through our notification service, follow these steps:
         <br>
         <br>
         <span class="w3-tag w3-black">Step 1</span> 
         <div class="w3-container w3-white">
             <p>Subscribe to our Telegram notification service(<?php echo $telegramBotUsername; ?>) <a href=<?php echo $telegramBotURL; ?> target="_blank"><u><b>here</b></u></a>.</p>
-            <p><img src="images/telebotinfo.jpg></p>
+            <!-- <p><img src="images/telebotinfo.jpg" height='200px' width='250px'></p> -->
         </div>
         <span class="w3-tag w3-black">Step 2</span> 
         <div class="w3-container w3-white">
             <p>Press <b>/start</b>.</p>
+            <!-- <p><img src="images/step2telebotinfo.jpg" height='300px' width='200px'></p> -->
         </div>
         <span class="w3-tag w3-black">Step 3</span> 
         <div class="w3-container w3-white">
             <form action="paymentcomplete.php" method="POST">
-                <p>Enter your Email and Telegram ID below to get notified of the outcome of your adoption application.</p>
-                <p><input class="w3-input w3-border" type="text" placeholder="Enter email" name="email" style="width: 25%" value="<?php if(!empty($email)){ echo $email;}?>" required></p>
-                <p><input class="w3-input w3-border" type="text" placeholder="Enter Telegram ID" name="telegramID" style="width: 20%" value="<?php if(!empty($telegramID)){ echo $telegramID;}?>" required></p>
+                <p>Enter your Telegram Username to get notified of the outcome of your adoption application.</p>
+                <!-- <p><input class="w3-input w3-border" type="text" placeholder="Enter email" name="email" style="width: 25%" value="<?php if(!empty($email)){ echo $email;}?>" required></p> -->
+                <p><input class="w3-input w3-border" type="text" placeholder="Enter Telegram Username" name="telegramID" style="width: 20%" value="<?php if(!empty($telegramID)){ echo $telegramID;}?>" required></p>
                 <p><button class="w3-button w3-black" type="submit" name="subscribeBtn">Submit <i class="fa fa-paper-plane"></i></button></p>
                 <p><input class="w3-input w3-border" type="hidden" name="transactionID" style="width: 20%" <?php if(isset($_REQUEST["transactionID"])){echo "value='$transactionID'";} ?>></p>
+                <p><input class="w3-input w3-border" type="hidden" name="receivedStatus" style="width: 20%" <?php echo "value='$receivedStatus'"; ?>></p>
             </form>
             <p style="margin-bottom:25px;"><?php echo $displayMessage; ?></p>
         </div>

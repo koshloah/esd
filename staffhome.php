@@ -134,23 +134,23 @@ else{
                 </tbody>  
             </table>  
 
-            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"><b>Popular Dog(s)</b></h3>
+            <!-- <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"><b>Popular Dog(s)</b></h3>-->
             <?php 
-                foreach($mostPopularDog as $eachPopularDogID => $eachPopularDogCount){
-                    $url = $dogManagementGetDogURL.$eachPopularDogID;
-                    $json = file_get_contents($url);
-                    $data = json_decode($json);
+                // foreach($mostPopularDog as $eachPopularDogID => $eachPopularDogCount){
+                //     $url = $dogManagementGetDogURL.$eachPopularDogID;
+                //     $json = file_get_contents($url);
+                //     $data = json_decode($json);
 
-                    if($data != false){
-                        echo "
-                        <h4><b>A total of $eachPopularDogCount applications was submitted to adopt $data->name! (ID: $eachPopularDogID)</b></h4>
-                        <img src='$data->pic1' height='300' width='300' style='border-radius: 15px;'>  
-                        ";
+                //     if($data != false){
+                //         echo "
+                //         <h4><b>A total of $eachPopularDogCount applications was submitted to adopt $data->name! (ID: $eachPopularDogID)</b></h4>
+                //         <img src='$data->pic1' height='300' width='300' style='border-radius: 15px; object-fit: cover;'>  
+                //         ";
                         
-                    }
+                //     }
                     
-                }
-            ?>
+                // }
+            ?> 
 
         </div>
     </div>
@@ -159,5 +159,7 @@ else{
 $(document).ready(function(){
     $('#myTable').dataTable();
 });
+
+
 </script>
 </html>  

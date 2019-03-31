@@ -106,7 +106,7 @@ else{
                         <input list="breeds" name="breed" class="w3-select" style="padding-left:10px; width: 300px;" placeholder="All" value="<?php if($selectedDogBreed != '' && $selectedDogBreed != 'All'){ echo $selectedDogBreed;}?>">
                         <datalist id="breeds">
                             <option value="All">
-                            <option value="Tibco">
+                            <option value="Husky">
                             <?php
                                 if($dogBreedStatus == "success"){
                                     foreach($dogBreeds as $eachbreed){
@@ -133,8 +133,8 @@ else{
             if(empty($allDogs)){
                 echo "
                     <div class='w3-display-container' style='margin-top:-10px;'>
-                        <h4><b>We currently do not have any <u>$selectedDogBreed</u> dogs.</b></h4>
-                        <h5>Would you like to subscribe to our Adogtion Newsletter Service? You will receive an email of the list of latest available dogs.</h5>
+                        <h4><b>We currently do not have any $selectedDogBreed.</b></h4>
+                        <h5>Subscribe to our Adogtion Newsletter Email Service to receive the list of latest available dogs.</h5>
                         <form action='http://www.google.com'>
                             <b>Email:</b><input class='w3-input w3-border' type='text' name='email' placeholder='abc@mail.com' required>
                             <td><button class='w3-button w3-black w3-section' type='submit' name='subscriptionButton'>Subscribe <i class='fa fa-paw'></i></button></td>
@@ -151,7 +151,7 @@ else{
                         echo "<div class='w3-col l3 m6 w3-margin-bottom'>
                             <div class='w3-display-container'>
                                 <div class='w3-display-bottomleft w3-green w3-padding'>$eachDog->name, $availableStatus</div>
-                                <a href='viewdog.php?dogid=$eachDog->id'><img src='$eachDog->pic1' class='w3-hover-sepia' style='width:280px; height:280px; border-radius: 4%;' id='img$counter'> </a>
+                                <a href='viewdog.php?dogid=$eachDog->id'><img src='$eachDog->pic1' class='w3-hover-sepia' style='width:280px; height:280px; border-radius: 4%; object-fit: cover;' id='img$counter'> </a>
                             </div>
                         </div>";
                     }

@@ -45,28 +45,12 @@ if(isset($_REQUEST["submitBtn"])){
         
         // if approved, approve selected application and reject the rest that applied for the same dog
         if($selectedStatus == "Approved"){
-            $ch = curl_init();
 
-            curl_setopt($ch, CURLOPT_URL, $updateDogAdoptionApplication2URL);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, "{  \n   \"ApplicationID\": \"$selectedApplicationID\",  \n   \"application_Status\": \"$selectedStatus\",  \n   \"payment_Status\": \"Approved\"  \n }");
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
-            
-            
-            $headers = array();
-            $headers[] = 'Content-Type: application/json';
-            $headers[] = 'Accept: application/json';
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-            
-            $result = curl_exec($ch);
-            if (curl_errno($ch)) {
-                echo 'Error:' . curl_error($ch);
-            }
-            curl_close ($ch);
         }
+        
         else if($selectedStatus == "Pending" || $selectedStatus == "Rejected"){
             $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $updateDogAdoptionApplicationURL);
+            curl_setopt($ch, CURLOPT_URL, 'http://LAPTOP-LYJK:8081/updateadoptionapplication');
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($ch, CURLOPT_POSTFIELDS, "{  \n   \"ApplicationID\": \"$selectedApplicationID\",  \n   \"application_Status\": \"$selectedStatus\",  \n   \"payment_Status\": \"Approved\"  \n }");
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
@@ -99,13 +83,6 @@ if(isset($_REQUEST["submitBtn"])){
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="https://use.fontawesome.com/6bdc8c0524.js"></script>
-</head>
 <body>
 
     <!-- Navbar -->
@@ -134,52 +111,69 @@ if(isset($_REQUEST["submitBtn"])){
         </div>
     </div>
 
-
-
-    <div class="container py-md-3" style="margin-top: 60px;">
-		<!-- <h2 class="heading text-center mb-sm-5 mb-4 editContent" data-selector=".editContent" style="">About Us </h2> -->
-		<div class="row w3-round-large" style="background-color: #d4eaff;">
-			<div class="col-lg-8">
-
-            <!-- <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"><b>Application ID: <?php echo $ApplicationID; ?></b></h3> -->
-
-
-				<h2 class="about-left editContent" data-selector=".editContent" style=""><b>Application ID: </b><?php echo $ApplicationID; ?></b></h2>
-				<hr style="border: 1px solid black;">
-                <h4 class="mt-sm-4 mt-3 editContent" data-selector=".editContent" style=""><b>Address:</b><?php echo $address; ?></b></h4>
-				<h4 class="mt-sm-4 mt-3 editContent" data-selector=".editContent" style=""><b>Postal Code: </b><?php echo $postalCode; ?></b></h4>
-                <h4 class="mt-sm-4 mt-3 editContent" data-selector=".editContent" style=""><b>Email: </b><?php echo $email; ?></b></h4>
-                <h4 class="mt-sm-4 mt-3 editContent" data-selector=".editContent" style=""><b>Phone Number: </b><?php echo $phoneNo; ?></b></h4>
-                <h4 class="mt-sm-4 mt-3 editContent" data-selector=".editContent" style=""><b>Application Status: </b><?php echo ucfirst($application_Status); ?></b></h4>
-                <h4 class="mt-sm-4 mt-3 editContent" data-selector=".editContent" style=""><b>Application For: </b><?php echo $dogName; ?></b></h4>
-                <h4 class="mt-sm-4 mt-3 editContent" data-selector=".editContent" style=""><b>Reason: </b><br><?php echo $reason; ?></b></h4>
-                <hr style="border: 1px solid black;">
-                <form action="staff_view_application.php" method="POST">
-                    <table>
-                        <tr>
-                            <td><h4><b>Set Application Status To:  </b></h4></td>
-                            <td>
-                                <select name="selectedStatus" class="form-control form-control-sm">
-                                    <option <?php if($redirectedFrom == "approved"){ echo "selected";}?>>Approved</option>
-                                    <option <?php if($redirectedFrom == "rejected"){ echo "selected";}?>>Rejected</option>
-                                    <option <?php if($redirectedFrom == "home"){ echo "selected";}?>>Pending</option>
-                                </select>
-                            </td>
-                        </tr>
-                    </table>
-                    <button class="w3-button w3-black w3-round-medium" name="submitBtn" type="submit">Submit</button>
-                    <input type="hidden" name="selectedApplicationID" value="<?php echo $ApplicationID; ?>">
-                    <input type="hidden" name="redirectedFrom" value="<?php echo $redirectedFrom; ?>">
-                </form>
-			</div>
-			<div class="col-lg-4 col-md-8">
-                    <img src=<?php echo $dogPic?> class="img-fluid w3-right" height="300px" width="350px" data-selector="img" style="margin:10px; border-radius: 4%; object-fit: cover;">
-                
-			</div>
-		</div>
-	</div>
+    <div class="w3-content w3-padding" style="max-width:1564px">
+        <div class="w3-container" style="margin-top: 30px;">
+            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"><b>Application ID: <?php echo $ApplicationID; ?></b></h3>
+        
+            <table id="tableDisplay">
+                <tr>
+                    <td valign="top" style="width:200px; "><b>Applicant's Name:</b></td>
+                    <td><?php echo $firstName . " " . $lastName; ?></td>
+                </tr>
+                <tr>
+                    <td valign="top"><b>Address:</b></td>
+                    <td><?php echo $address; ?></td>
+                </tr>
+                <tr>
+                    <td valign="top"><b>Postal Code:</b></td>
+                    <td><?php echo $postalCode; ?></td>
+                </tr>
+                <tr>
+                    <td valign="top"><b>Email:</b></td>
+                    <td><?php echo $email; ?></td>
+                </tr>
+                <tr>
+                    <td valign="top"><b>Phone Number:</b></td>
+                    <td><?php echo $phoneNo; ?></td>
+                </tr>
+                <tr>
+                    <td valign="top"><b>Reason:</b></td>
+                    <td><?php echo $reason; ?></td>
+                </tr>
+                <tr>
+                    <td valign="top"><b>Application Status:</b></td>
+                    <td><?php echo ucfirst($application_Status); ?></td>
+                </tr>
+                <tr>
+                    <td valign="top"><b>Application For:</b></td>
+                    <td><?php echo $dogName; ?></td>
+                </tr>
+                    
+            </table>
+            <img src=<?php echo $dogPic?> height="300" width="300" style="border-radius: 15px; margin-top:10px; object-fit: cover;">
+            <br>
+            <br>
+            <form action="staff_view_application.php" method="POST">
+                <b>Set Application Status To: </b> 
+                <select name="selectedStatus" class="w3-button w3-white w3-border">
+                    <option>Approved</option>
+                    <option>Rejected</option>
+                    <option>Pending</option>
+                </select>
+                <br>
+                <button class="w3-button w3-black w3-section" name="submitBtn" type="submit">Submit</button>
+                <input type="hidden" name="selectedApplicationID" value="<?php echo $ApplicationID; ?>">
+                <input type="hidden" name="redirectedFrom" value="<?php echo $redirectedFrom; ?>">
+            </form>
+        </div>
+    
+    
     <?php
     printErrors();
     ?>
+
+    <!-- End page content -->
+    </div>
+
 </body>
 </html>

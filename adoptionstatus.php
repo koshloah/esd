@@ -79,7 +79,7 @@ if(isset($_REQUEST["submitBtn"])){
         if($application_Status == "Approved"){
           echo "<p style='margin-top:-20px;'><h4><b>Congratulations!</b> Your Adoption Application: $applicationID for $dogName has been <b>$application_Status</b>.</h4></p>
                 <p><h4>You will be contacted to complete the remaining adoption process of $dogName shortly.</h4></p>
-                <p><img src=$dogPic height='300' width='300' style='border-radius: 15px;'></p>
+                <p><img src=$dogPic height='300' width='300' style='border-radius: 15px; object-fit: cover;'></p>
                 <div class='fb-share-button' 
                   data-href='$dogPic' 
                   data-layout='button' data-size='large'>
@@ -92,10 +92,10 @@ if(isset($_REQUEST["submitBtn"])){
         }
         else if($application_Status == "Rejected"){
           echo "<p style='margin-top:-20px;'><h4>Unfortunately, your Adoption Application: $applicationID for $dogName has been <b>$application_Status</b>.</h4><h4>Check out the other dogs available for adoption <a href='adopt-view.php'><b><u>here</u></b></a>.</h4></p>
-                <p><img src='images/rejected.gif' height='300' width='300' style='border-radius: 15px;'></p>";
+                <p><img src='images/rejected.gif' height='300' width='300' style='border-radius: 15px; object-fit: cover;'></p>";
         }
         else if($application_Status == "Pending"){
-          echo "<p style='margin-top:-20px;'><h4>Your Adoption Application: $applicationID for $dogName is <b>$application_Status</b>.</h4><h4>A notification will be sent to your Email and Telegram once there is an outcome.</h4></p>";
+          echo "<p style='margin-top:-20px;'><h4>Your Adoption Application: $applicationID for $dogName is <b>$application_Status</b>.</h4><h4>A notification will be sent to your Telegram once there is an outcome.</h4></p>";
         }
         
       }

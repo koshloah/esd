@@ -24,7 +24,7 @@ INSERT INTO Dog_Application.DOG_ADOPT VALUES (
     178902,
     "eklum@smu.edu.sg",
     68280278,
-    "I am the co-instructor of IS213, Enterprise Solution Development.",
+    "I like this dog",
     43674230,
     "Pending",
     "Approved"
@@ -36,7 +36,7 @@ INSERT INTO Dog_Application.DOG_ADOPT VALUES (
     178902,
     "venky@smu.edu.sg",
     68280931,
-    "I am the instructor of IS213, Enterprise Solution Development",
+    "I like this dog",
     43674230,
     "Pending",
     "Approved"
@@ -48,7 +48,7 @@ INSERT INTO Dog_Application.DOG_ADOPT VALUES (
     178902,
     "jane.seah.2016@smu.edu.sg",
     87654321,
-    "I am the slave of IS213 class G1, I like dogs",
+    "I like this dog",
     43943559,
     "Pending",
     "Approved"
