@@ -117,7 +117,7 @@ $emailNoDuplicate = "";
             document.getElementById("lastName").value = "Tan";
             document.getElementById("address").value = "80 Stamford Rd";
             document.getElementById("postalCode").value = "178902";
-            document.getElementById("email").value = "xuesi.sim.2017@smu.edu.sg";
+            document.getElementById("email").value = "josh.lim.2017@smu.edu.sg";
             document.getElementById("phoneNumber").value = "98765432";
 
             var reason = "Because it is one way to fight puppy mills. If you buy a dog from a pet store, online seller or flea market, you’re almost certainly getting a dog from a puppy mill.";

@@ -74,6 +74,7 @@ else{
             <a href="staffhome.php" class="w3-bar-item w3-button"><i class="fas fa-dog"></i> A<b>dog</b>tion <i class="fas fa-home"></i></a>
             <!-- <a class="w3-bar-item">Welcome, <?php echo $_SESSION['firstName'].".";?></a> -->
                 <div class="w3-right w3-hide-small">
+                    <a href="updateDogs.php" class="w3-bar-item w3-button">UPDATE DOGS</a>
                     <!-- <a href="staffhome.php" class="w3-bar-item w3-button">PENDING</a>
                     <a href="approvedApplications.php" class="w3-bar-item w3-button">APPROVED</a>
                     <a href="rejectedApplications.php" class="w3-bar-item w3-button">REJECTED</a> -->
@@ -96,7 +97,7 @@ else{
 
     <div class="w3-content w3-padding" style="max-width:1564px">
         <div class="w3-container" style="margin-top: 30px;">
-            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"><b>Pending Adoption Applications</b> <span class="w3-tag w3-Light-Blue w3-round-medium"><?php echo $pendingApplicationCount?></span> </h3>
+            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"> <span class="w3-tag w3-Light-Blue w3-round-medium"><?php echo $pendingApplicationCount?></span> <b> Pending Adoption Applications</b></h3>
 
             <table id="myTable" class="table table-dark">  
                 <thead class="thead-dark"> 

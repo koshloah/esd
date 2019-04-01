@@ -68,7 +68,7 @@ if(isset($_REQUEST["subscribeBtn"])){
                     curl_setopt($ch, CURLOPT_URL, $outcomeNotificationServiceURL);
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
                     curl_setopt($ch, CURLOPT_POSTFIELDS, "{  \n   \"application_id\": \"$transactionID\",  \n   \"email\": \"$email\",  \n   \"chat_id\": $telegramChatID,  \n   \"telegram_username\": \"$telegramID\"  \n }");
-                    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+                    curl_setopt($ch, CURLOPT_POST, 1);
 
                     $headers = array();
                     $headers[] = 'Content-Type: application/json';
@@ -80,6 +80,7 @@ if(isset($_REQUEST["subscribeBtn"])){
                         echo 'Error:' . curl_error($ch);
                     }
                     curl_close ($ch);
+                    //var_dump($result);
                     
                     $receivedStatus = "yes";
 

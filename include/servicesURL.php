@@ -17,24 +17,26 @@
 
 
     /* G1T6 Tibco BW Microservices */
-    // retrieve all dogs
-    $dogManagementServiceURL = "http://LAPTOP-LYJK:8080/dogs";
-    // retrieve individual dog 
-    $dogManagementGetDogURL = "http://LAPTOP-LYJK:8080/dog/";
-
     // retrieve all adoption applications
-    $dogAdoptionApplicationURL = "http://LAPTOP-LYJK:8081/getalladoptionapplications";
+    $dogAdoptionApplicationURL = "http://LAPTOP-LYJK:8080/getalladoptionapplicationsv2";
     // create new adoption applications
-    $newDogAdoptionApplicationURL = "http://LAPTOP-LYJK:8081/newadoptionapplication";
+    $newDogAdoptionApplicationURL = "http://LAPTOP-LYJK:8080/newadoptionapplication";
     // retrieve individual adoption application
-    $getDogAdoptionApplicationURL = "http://laptop-lyjk:8081/getadoptionapplication/";
+    $getDogAdoptionApplicationURL = "http://laptop-lyjk:8080/getadoptionapplication/";
     // update (to pending/rejected) individual adoption application
-    $updateDogAdoptionApplicationURL = "http://LAPTOP-LYJK:8081/updateadoptionapplication";
+    $updateDogAdoptionApplicationURL = "http://LAPTOP-LYJK:8080/updateadoptionapplication";
     // approve selected adoption application, reject the other applications made to the same dogID if any
-    $updateDogAdoptionApplication2URL = "http://LAPTOP-LYJK:8081/updatedadoptionapplicationV2";
+    $updateDogAdoptionApplication2URL = "http://LAPTOP-LYJK:8080/updatedadoptionapplicationV2";
+
+    // retrieve all dogs
+    $dogManagementServiceURL = "http://LAPTOP-LYJK:8081/dogs";
+    // retrieve individual dog 
+    $dogManagementGetDogURL = "http://LAPTOP-LYJK:8081/dog/";
+    // update individual dog status
+    $dogManagementUpdateDogStatusURL = "http://LAPTOP-LYJK:8081/change_status";
 
     // create outcome notification 
-    $outcomeNotificationServiceURL = "http://LAPTOP-LYJK:8082/outcome_notification";
+    $outcomeNotificationServiceURL = "http://LAPTOP-LYJK:8082/outcome_notification_v2";
 
     // create subscription to receive weekly notification of new dog updates 
     $newSubscriptionServiceURL = "http://LAPTOP-LYJK:8085/subscription";

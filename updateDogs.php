@@ -1,6 +1,6 @@
 <?php
 
-require_once "include/common.php";
+require_once "include/common_staff.php";
 require_once "include/servicesURL.php";
 //require_once "include/DogDAO.php";
 
@@ -21,24 +21,15 @@ $selectedDogBreed = "";
 $uniqueDogBreeds = [];
 $subscriptionMessage = "";
 
-if(isset($_SESSION["resetSessionVariable"])){
-    if(isset($_SESSION["dogList"])){
-        unset($_SESSION["dogList"]);
-        unset($_SESSION["resetSessionVariable"]);
-    }
-}
-
 if(isset($_SESSION["dogList"])){
     $allDogs = $_SESSION["dogList"];
     foreach($allDogs as $eachDog){
-        if($eachDog->status == "A"){
-            $uniqueDogBreeds[]=$eachDog->breed;
-        } 
+        $uniqueDogBreeds[]=$eachDog->breed;
     }
     $dogBreeds = array_unique($uniqueDogBreeds);
     $dogBreedStatus = "success";
-    if(isset($_SESSION["breed"])){
-        $selectedDogBreed = $_SESSION["breed"];
+    if(isset($_SESSION["staff_breed"])){
+        $selectedDogBreed = $_SESSION["staff_breed"];
 
         if(isset($_REQUEST["subscriptionButton"])){
             if(isset($_REQUEST["email"])){
@@ -82,7 +73,7 @@ if(isset($_SESSION["dogList"])){
         else{
             $filteredDogList = [];
             foreach($allDogs as $eachDog){
-                if($eachDog->breed==$selectedDogBreed && $eachDog->status == "A"){
+                if($eachDog->breed==$selectedDogBreed){
                     $filteredDogList[]=$eachDog;
                 }
             }
@@ -100,16 +91,14 @@ else{
     if($data != false){
         $allDogs = $data->Dog;
         foreach($allDogs as $eachDog){
-            if($eachDog->status == "A"){
-                $uniqueDogBreeds[]=$eachDog->breed;
-            } 
+            $uniqueDogBreeds[]=$eachDog->breed;
         }
         $dogBreeds = array_unique($uniqueDogBreeds);
         $dogBreedStatus = "success";
         $_SESSION["dogList"] = $allDogs;
     }
     else{
-        header("Location: home.php");
+        header("Location: staffhome.php");
     }
 }
 
@@ -143,10 +132,39 @@ else{
 <!DOCTYPE html>
 <html>
 <body>
+    <!-- Navbar -->
+    <div class="w3-top">
+        <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+            <a href="staffhome.php" class="w3-bar-item w3-button"><i class="fas fa-dog"></i> A<b>dog</b>tion <i class="fas fa-home"></i></a>
+            <!-- <a class="w3-bar-item">Welcome, <?php echo $_SESSION['firstName'].".";?></a> -->
+                <div class="w3-right w3-hide-small">
+                    <a href="updateDogs.php" class="w3-bar-item w3-button">UPDATE DOGS</a>
+                    <!-- <a href="staffhome.php" class="w3-bar-item w3-button">PENDING</a>
+                    <a href="approvedApplications.php" class="w3-bar-item w3-button">APPROVED</a>
+                    <a href="rejectedApplications.php" class="w3-bar-item w3-button">REJECTED</a> -->
+                    <!--<a href="#" class="w3-bar-item w3-button w3-hide-small">Adopt</a>
+                    <a href="#" class="w3-bar-item w3-button w3-hide-small">Adopt</a>-->
+                    <div class="w3-dropdown-hover w3-hide-small">
+                        <a class="w3-button w3-white" title="More">APPLICATIONS <i class="fa fa-caret-down"></i></a>     
+                        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                            <a href="staffhome.php" class="w3-bar-item w3-button">PENDING</a>
+                            <a href="approvedApplications.php" class="w3-bar-item w3-button">APPROVED</a>
+                            <a href="rejectedApplications.php" class="w3-bar-item w3-button">REJECTED</a>
+                        </div>
+                    </div>
+                    <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small">ABOUT</a> -->
+                    <a href="staffhome.php" class="w3-bar-item w3-button w3-hide-small">LOGOUT</a>
+                </div>
+            <!--<a href="javascript:void(0)" class="w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>-->
+        </div>
+    </div>
+
+
+
 <div class="w3-content w3-padding" style="max-width:1564px">
     <div class="w3-container" style="margin-top:40px;">
-        <h1><b>Adopt, Don't Shop!</b></h1>
-        <form action="adopt.php" method="post">
+        <h1><b>Dogs Management</b></h1>
+        <form action="staffadopt.php" method="post">
             <table>
                 <tr>
                     <td><b>Breed:</b></td>
@@ -154,7 +172,7 @@ else{
                         <input list="breeds" name="breed" class="w3-select" style="padding-left:10px; width: 300px;" placeholder="All" value="<?php if($selectedDogBreed != '' && $selectedDogBreed != 'All'){ echo $selectedDogBreed;}?>">
                         <datalist id="breeds">
                             <option value="All">
-                            <option value="Husky">
+                            <!-- <option value="Husky"> -->
                             <?php
                                 if($dogBreedStatus == "success"){
                                     foreach($dogBreeds as $eachbreed){
@@ -200,19 +218,19 @@ else{
                         echo "<div class='w3-col l3 m6 w3-margin-bottom'>
                             <div class='w3-display-container'>
                                 <div class='w3-display-bottomleft w3-green w3-padding'>$eachDog->name, $availableStatus</div>
-                                <a href='viewdog.php?dogid=$eachDog->id'><img src='$eachDog->pic1' class='w3-hover-sepia' style='width:280px; height:280px; border-radius: 4%; object-fit: cover;' id='img$counter'> </a>
+                                <a href='staffviewdog.php?dogid=$eachDog->id'><img src='$eachDog->pic1' class='w3-hover-sepia' style='width:280px; height:280px; border-radius: 4%; object-fit: cover;' id='img$counter'> </a>
                             </div>
                         </div>";
                     }
-                    // else{
-                    //     $availableStatus = "Adopted";
-                    //     echo "<div class='w3-col l3 m6 w3-margin-bottom'>
-                    //         <div class='w3-display-container'>
-                    //             <div class='w3-display-topleft w3-red w3-padding'>$eachDog->name, $availableStatus</div>
-                    //             <a href='viewdog.php?dogid=$eachDog->id'><img src='$eachDog->pic1' style='width:280px; height:280px; id='img$counter'> </a>
-                    //         </div>
-                    //     </div>";
-                    // }
+                    else{
+                        $availableStatus = "Adopted";
+                        echo "<div class='w3-col l3 m6 w3-margin-bottom'>
+                            <div class='w3-display-container'>
+                                <div class='w3-display-bottomleft w3-red w3-padding'>$eachDog->name, Not Available</div>
+                                <a href='staffviewdog.php?dogid=$eachDog->id'><img src='$eachDog->pic1' class='w3-hover-sepia' style='width:280px; height:280px; border-radius: 4%; object-fit: cover;' id='img$counter'> </a>
+                            </div>
+                        </div>";
+                    }
                     
                     $counter += 1;
                 }

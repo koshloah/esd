@@ -114,6 +114,7 @@ if(isset($_REQUEST["submitBtn"])){
             <a href="staffhome.php" class="w3-bar-item w3-button"><i class="fas fa-dog"></i> A<b>dog</b>tion <i class="fas fa-home"></i></a>
             <!-- <a class="w3-bar-item">Welcome, <?php echo $_SESSION['firstName'].".";?></a> -->
                 <div class="w3-right w3-hide-small">
+                    <a href="updateDogs.php" class="w3-bar-item w3-button">UPDATE DOGS</a>
                     <!-- <a href="staffhome.php" class="w3-bar-item w3-button">PENDING</a>
                     <a href="approvedApplications.php" class="w3-bar-item w3-button">APPROVED</a>
                     <a href="rejectedApplications.php" class="w3-bar-item w3-button">REJECTED</a> -->

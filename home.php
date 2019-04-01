@@ -27,7 +27,9 @@ if(isset($_SESSION["dogList"])){
     $allDogs = $_SESSION["dogList"];
     shuffle($allDogs);
     foreach($allDogs as $eachDog){
+      if($eachDog->status == "A"){
         $uniqueDogBreeds[]=$eachDog->breed;
+      } 
     }
     $dogBreeds = array_unique($uniqueDogBreeds);
     $dogBreedStatus = "success";
@@ -41,7 +43,9 @@ else{
     if($data != false){
         $allDogs = $data->Dog;
         foreach($allDogs as $eachDog){
+          if($eachDog->status == "A"){
             $uniqueDogBreeds[]=$eachDog->breed;
+          } 
         }
         $dogBreeds = array_unique($uniqueDogBreeds);
         $dogBreedStatus = "success";
