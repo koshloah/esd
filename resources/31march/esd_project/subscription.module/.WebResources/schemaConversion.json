@@ -1,0 +1,12 @@
+{"records": [
+    {
+        "jsonSchemaLocation": "/subscription.module/Service Descriptors/mailtest.module.Process-mail.json",
+        "conversionType": "generated",
+        "xsdSchemaTargetNamespace": "/T1554044574071Converted/JsonSchema"
+    },
+    {
+        "jsonSchemaLocation": "/subscription.module/Service Descriptors/subsc.module.Subservice-Subscription.json",
+        "conversionType": "linked",
+        "xsdSchemaTargetNamespace": "Sub"
+    }
+]}

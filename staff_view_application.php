@@ -147,7 +147,8 @@ if(isset($_REQUEST["submitBtn"])){
 
 				<h2 class="about-left editContent" data-selector=".editContent" style=""><b>Application ID: </b><?php echo $ApplicationID; ?></b></h2>
 				<hr style="border: 1px solid black;">
-                <h4 class="mt-sm-4 mt-3 editContent" data-selector=".editContent" style=""><b>Address:</b><?php echo $address; ?></b></h4>
+                <h4 class="mt-sm-4 mt-3 editContent" data-selector=".editContent" style=""><b>Applicant Name: </b><?php echo $firstName . " ". $lastName; ?></b></h4>
+                <h4 class="mt-sm-4 mt-3 editContent" data-selector=".editContent" style=""><b>Address: </b><?php echo $address; ?></b></h4>
 				<h4 class="mt-sm-4 mt-3 editContent" data-selector=".editContent" style=""><b>Postal Code: </b><?php echo $postalCode; ?></b></h4>
                 <h4 class="mt-sm-4 mt-3 editContent" data-selector=".editContent" style=""><b>Email: </b><?php echo $email; ?></b></h4>
                 <h4 class="mt-sm-4 mt-3 editContent" data-selector=".editContent" style=""><b>Phone Number: </b><?php echo $phoneNo; ?></b></h4>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Studio 2018 (https://www.liquid-technologies.com) -->
+<schema xmlns:tns="Dogs" elementFormDefault="qualified"  targetNamespace="Dogs" xmlns="http://www.w3.org/2001/XMLSchema">
+	
+	<complexType name="Application">
+		<sequence>
+			<element name="ApplicationID" type="string"/>
+			<element name="firstName" type="string"/>
+			<element name="lastName" type="string"/>
+			<element name="address" type="string"/>
+			<element name="postalCode" type="string"/>
+			<element name="email" type="string"/>
+			<element name="phoneNo" type="string"/>
+			<element name="reason" type="string"/>
+			<element name="dogID" type="string"/>
+            <element name="application_Status" type="string"/>
+            <element name="payment_Status" type="string"/>
+		</sequence>
+	</complexType>
+    <element name="Application" type="tns:Application" />
+    
+    <complexType name="Applications">
+        <sequence>
+            <element ref="tns:Application" minOccurs="0" maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+    <element name="Applications" type="tns:Applications" />
+    
+    <complexType name="Add_Adoption_Application">
+        <sequence>
+    		<element name="ApplicationID" type="string"/>
+			<element name="firstName" type="string"/>
+			<element name="lastName" type="string"/>
+			<element name="address" type="string"/>
+			<element name="postalCode" type="string"/>
+			<element name="email" type="string"/>
+			<element name="phoneNo" type="string"/>
+			<element name="reason" type="string"/>
+			<element name="dogID" type="string"/>
+            <element name="application_Status" type="string"/>
+            <element name="payment_Status" type="string"/>
+	    </sequence>
+    </complexType>
+    <element name="Add_Adoption_Application" type="tns:Add_Adoption_Application"/>
+
+    <complexType name="Update_Adoption_Application_Status">
+        <sequence>
+    		<element name="ApplicationID" type="string"/>
+            <element name="application_Status" type="string"/>
+            <element name="payment_Status" type="string"/>
+	    </sequence>
+    </complexType>
+    <element name="Update_Adoption_Application_Status" type="tns:Update_Adoption_Application_Status"/>
+
+
+    <complexType name="AMQP_Send_Msg">
+        <sequence>
+    		<element name="ApplicationID" type="string"/>
+            <element name="application_Status" type="string"/>
+            <element name="dogID" type="string"/>
+	    </sequence>
+    </complexType>
+    <element name="AMQP_Send_Msg" type="tns:AMQP_Send_Msg"/>
+    
+        <complexType name="getID">
+    <sequence>
+      <element name="id" type="string"/>
+    </sequence>
+  </complexType>
+    <element name="getID" type="tns:getID" />
+    
+    <complexType name="getIDs">
+        <sequence>
+            <element ref="tns:getID" minOccurs="0" maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+    <element name="getIDs" type="tns:getIDs" />
+    
+</schema>

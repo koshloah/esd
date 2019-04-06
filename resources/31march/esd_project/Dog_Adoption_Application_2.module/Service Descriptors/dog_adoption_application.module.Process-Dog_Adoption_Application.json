@@ -1,0 +1,77 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Post a new adoption application",
+    "description" : "Post a new adoption application"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/newadoptionapplication" : {
+      "post" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "post-newadoptionapplication",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/Add_Adoption_Application"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Add_Adoption_Application" : {
+      "type" : "object",
+      "required" : [ "firstName", "lastName", "reason", "dogID", "address", "postalCode", "payment_Status", "ApplicationID", "application_Status", "email", "phoneNo" ],
+      "properties" : {
+        "ApplicationID" : {
+          "type" : "string"
+        },
+        "firstName" : {
+          "type" : "string"
+        },
+        "lastName" : {
+          "type" : "string"
+        },
+        "address" : {
+          "type" : "string"
+        },
+        "postalCode" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "phoneNo" : {
+          "type" : "string"
+        },
+        "reason" : {
+          "type" : "string"
+        },
+        "dogID" : {
+          "type" : "string"
+        },
+        "application_Status" : {
+          "type" : "string"
+        },
+        "payment_Status" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

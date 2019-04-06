@@ -1,0 +1,7 @@
+{
+    "records": [],
+    "resources": [{
+        "location": "Service Descriptors/mailtest.module.Process-mail.json",
+        "type": "generated"
+    }]
+}

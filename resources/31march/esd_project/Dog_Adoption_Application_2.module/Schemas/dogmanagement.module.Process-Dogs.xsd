@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="/T1554049207257Converted/JsonSchema" xmlns:tns="/T1554049207257Converted/JsonSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="getIDs" type="tns:getIDs"/>
+    <xs:complexType name="getIDs">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="getID" type="tns:getID"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Dog" type="tns:Dog"/>
+    <xs:complexType name="Dog">
+        <xs:sequence>
+            <xs:element name="id" type="xs:integer"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="age" type="xs:string"/>
+            <xs:element name="breed" type="xs:string"/>
+            <xs:element name="size" type="xs:string"/>
+            <xs:element name="sex" type="xs:string"/>
+            <xs:element name="status" type="xs:string"/>
+            <xs:element name="altered" type="xs:string"/>
+            <xs:element name="hasShots" type="xs:string"/>
+            <xs:element name="houseTrained" type="xs:string"/>
+            <xs:element name="dateAdded" type="xs:date"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="pic1" type="xs:string"/>
+            <xs:element name="pic2" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Change_Status" type="tns:Change_Status"/>
+    <xs:complexType name="Change_Status">
+        <xs:sequence>
+            <xs:element name="id" type="xs:integer"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="getID" type="tns:getID"/>
+    <xs:complexType name="getID">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Dogs" type="tns:Dogs"/>
+    <xs:complexType name="Dogs">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="Dog" type="tns:Dog"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Add_Dog" type="tns:Add_Dog"/>
+    <xs:complexType name="Add_Dog">
+        <xs:sequence>
+            <xs:element name="id" type="xs:integer"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="age" type="xs:string"/>
+            <xs:element name="breed" type="xs:string"/>
+            <xs:element name="size" type="xs:string"/>
+            <xs:element name="sex" type="xs:string"/>
+            <xs:element name="status" type="xs:string"/>
+            <xs:element name="altered" type="xs:string"/>
+            <xs:element name="hasShots" type="xs:string"/>
+            <xs:element name="houseTrained" type="xs:string"/>
+            <xs:element name="dateAdded" type="xs:date"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="pic1" type="xs:string"/>
+            <xs:element name="pic2" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_C9ed0FPKEem00JU44YLUww" targetNamespace="http://tns.tibco.com/bw/composite/subscription.module" name="subscription.module" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_Pgn0UFPVEem00JU44YLUww" name="subscription" promote="ComponentSubservice/subscription">
+    <sca:interface.wsdl xmi:id="_PgobYFPVEem00JU44YLUww" interface="http://xmlns.example.com/20190401002033PLT#wsdl.interface(subscription)" scaext:wsdlLocation="../Processes/subsc/module/Subservice.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_PgtT4FPVEem00JU44YLUww" name="RestService" path="/subscription" docBasePath="http://localhost:7777/subscription.module" docResourcePath="Subscription" basePath="/" connector="subscription.module.Subscription" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/subsc.module.Subservice-Subscription.json">
+      <operation xmi:id="_PgyMYFPVEem00JU44YLUww" operationName="post" nickname="post-subscription" httpMethod="POST" responseStyle="element" requestStyle="element">
+        <responseStatus xmi:id="_ib9AcFPWEem00JU44YLUww" statusCode="201" reasonPhrase="Created" dataType="string"/>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_PhO4UFPVEem00JU44YLUww"/>
+      <advancedConfig xmi:id="_PgtT4VPVEem00JU44YLUww" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_PgyMYVPVEem00JU44YLUww" bindingName="RestService"/>
+  </sca:service>
+  <sca:service xmi:id="_0ZVMAVPWEem00JU44YLUww" name="unsubscribe" promote="ComponentSubservice/unsubscribe">
+    <sca:interface.wsdl xmi:id="_0ZVMBVPWEem00JU44YLUww" interface="http://xmlns.example.com/20190401002033PLT#wsdl.interface(unsubscribe)" scaext:wsdlLocation="../Processes/subsc/module/Subservice.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_0ZcgwFPWEem00JU44YLUww" name="RestService1" path="/unsubscribe/{email}" docBasePath="http://localhost:7777/subscription.module" docResourcePath="Subscription" basePath="/" connector="subscription.module.Subscription" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/subsc.module.Subservice-Subscription.json">
+      <operation xmi:id="_0ZfkEFPWEem00JU44YLUww" operationName="put" nickname="put-unsubscribe" httpMethod="PUT" responseStyle="element" requestStyle="element">
+        <responseStatus xmi:id="_8ZA_YFPWEem00JU44YLUww" statusCode="200" reasonPhrase="OK" dataType="string"/>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_0ZgyMFPWEem00JU44YLUww">
+        <parameterMapping xmi:id="_0ZgyMVPWEem00JU44YLUww" parameterName="email" parameterType="Path" required="true"/>
+      </parameters>
+      <advancedConfig xmi:id="_0ZcgwVPWEem00JU44YLUww" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_0ZfkEVPWEem00JU44YLUww" bindingName="RestService1"/>
+  </sca:service>
+  <sca:property xmi:id="_DKrMUFPKEem00JU44YLUww" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_DKwr4FPKEem00JU44YLUww" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_DK09UFPKEem00JU44YLUww" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_DK5OwFPKEem00JU44YLUww" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_DK-HQFPKEem00JU44YLUww" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_DLCYsFPKEem00JU44YLUww" name="BW.CLOUD.PORT" type="XMLSchema:int" scalable="true"/>
+  <sca:property xmi:id="_DLFcAFPKEem00JU44YLUww" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:component xmi:id="_DDe_MFPKEem00JU44YLUww" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_DDe_MVPKEem00JU44YLUww" processName="subsc.module.Process"/>
+  </sca:component>
+  <sca:component xmi:id="_GeSRIFPVEem00JU44YLUww" name="ComponentSubservice" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_GeSRIVPVEem00JU44YLUww" processName="subsc.module.Subservice"/>
+    <sca:service xmi:id="_PgnNQFPVEem00JU44YLUww" name="subscription">
+      <sca:interface.wsdl xmi:id="_PgnNQVPVEem00JU44YLUww" interface="http://xmlns.example.com/20190401002033PLT#wsdl.interface(subscription)"/>
+    </sca:service>
+    <sca:service xmi:id="_0ZUk8FPWEem00JU44YLUww" name="unsubscribe">
+      <sca:interface.wsdl xmi:id="_0ZVMAFPWEem00JU44YLUww" interface="http://xmlns.example.com/20190401002033PLT#wsdl.interface(unsubscribe)"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

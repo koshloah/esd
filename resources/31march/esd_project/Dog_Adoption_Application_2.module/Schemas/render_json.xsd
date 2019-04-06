@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Created with Liquid Studio 2018 (https://www.liquid-technologies.com) -->
+<schema xmlns:tns="outcome" elementFormDefault="qualified" targetNamespace="outcome" xmlns="http://www.w3.org/2001/XMLSchema">
+    <complexType name="render_json">
+        <sequence>
+            <element name="ApplicationID" type="string" />
+        </sequence>
+    </complexType>
+    <element name="render_json" type="tns:render_json" />
+</schema>

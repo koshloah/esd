@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_cDROwE1BEemHyeqCRsO6Fw" targetNamespace="http://tns.tibco.com/bw/composite/Dog_Adoption_Application_2.module" name="Dog_Adoption_Application_2.module" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_leZagE1DEem3LpEI0nS25Q" name="newadoptionapplication" promote="ComponentProcess/newadoptionapplication">
+    <sca:interface.wsdl xmi:id="_lee6EE1DEem3LpEI0nS25Q" interface="http://xmlns.example.com/20190323152827PLT#wsdl.interface(newadoptionapplication2)" scaext:wsdlLocation="../Processes/dog_adoption_application/module/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_lemO0E1DEem3LpEI0nS25Q" name="RestService" path="/newadoptionapplication" docBasePath="http://localhost:7777/Dog_Adoption_Application_2.module" docResourcePath="Adoption_Application" basePath="/" connector="dog_adoption_application.module.Dog_Adoption_Application" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/dog_adoption_application.module.Process-Adoption_Application.json">
+      <operation xmi:id="_lep5ME1DEem3LpEI0nS25Q" operationName="post" nickname="post-newadoptionapplication" httpMethod="POST" responseStyle="element" requestStyle="element">
+        <responseStatus xmi:id="_p8rjsE1DEem3LpEI0nS25Q" statusCode="201" reasonPhrase="Dog Adoption Application Successfully Created" dataType="string"/>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_leuxsE1DEem3LpEI0nS25Q"/>
+      <advancedConfig xmi:id="_leoEAE1DEem3LpEI0nS25Q" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_lep5MU1DEem3LpEI0nS25Q" bindingName="RestService"/>
+  </sca:service>
+  <sca:service xmi:id="_U7yccE1GEem3LpEI0nS25Q" name="getalladoptionapplications" promote="ComponentProcess/getalladoptionapplications">
+    <sca:interface.wsdl xmi:id="_U7ycdE1GEem3LpEI0nS25Q" interface="http://xmlns.example.com/20190323152827PLT#wsdl.interface(getalladoptionapplications)" scaext:wsdlLocation="../Processes/dog_adoption_application/module/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_U7zDgE1GEem3LpEI0nS25Q" name="RestService1" path="/getalladoptionapplications" docBasePath="http://localhost:7777/Dog_Adoption_Application_2.module" docResourcePath="Adoption_Application" basePath="/" connector="dog_adoption_application.module.Dog_Adoption_Application" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/dog_adoption_application.module.Process-Adoption_Application.json">
+      <operation xmi:id="_U7zqkE1GEem3LpEI0nS25Q" operationName="get" nickname="get-getalladoptionapplications" httpMethod="GET" responseStyle="element" requestStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_U70RoE1GEem3LpEI0nS25Q"/>
+      <advancedConfig xmi:id="_U7zDgU1GEem3LpEI0nS25Q" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_U7zqkU1GEem3LpEI0nS25Q" bindingName="RestService1"/>
+  </sca:service>
+  <sca:service xmi:id="_mHghkk1GEem3LpEI0nS25Q" name="getadoptionapplication" promote="ComponentProcess/getadoptionapplication">
+    <sca:interface.wsdl xmi:id="_mHghlk1GEem3LpEI0nS25Q" interface="http://xmlns.example.com/20190323152827PLT#wsdl.interface(getadoptionapplication)" scaext:wsdlLocation="../Processes/dog_adoption_application/module/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_mHhIoE1GEem3LpEI0nS25Q" name="RestService2" path="/getadoptionapplication/{Application_ID}" docBasePath="http://localhost:7777/Dog_Adoption_Application_2.module" docResourcePath="Adoption_Application" basePath="/" connector="dog_adoption_application.module.Dog_Adoption_Application" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/dog_adoption_application.module.Process-Adoption_Application.json">
+      <operation xmi:id="_mHhvsE1GEem3LpEI0nS25Q" operationName="get" nickname="get-getadoptionapplication" httpMethod="GET" responseStyle="element" requestStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_mHi90E1GEem3LpEI0nS25Q">
+        <parameterMapping xmi:id="_mHjk4E1GEem3LpEI0nS25Q" parameterName="Application_ID" parameterType="Path" required="true"/>
+      </parameters>
+      <advancedConfig xmi:id="_mHhIoU1GEem3LpEI0nS25Q" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_mHhvsU1GEem3LpEI0nS25Q" bindingName="RestService2"/>
+  </sca:service>
+  <sca:service xmi:id="_4DOd0lK4EemAsKd-duUDwQ" name="updatedadoptionapplicationV2" promote="ComponentProcess/updatedadoptionapplicationV2">
+    <sca:interface.wsdl xmi:id="_4DOd1lK4EemAsKd-duUDwQ" interface="http://xmlns.example.com/20190323152827PLT#wsdl.interface(updatedadoptionapplicationV2)" scaext:wsdlLocation="../Processes/dog_adoption_application/module/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_4DRhIFK4EemAsKd-duUDwQ" name="RestService4" path="/updatedadoptionapplicationV2" docBasePath="http://localhost:7777/Dog_Adoption_Application_2.module" docResourcePath="Adoption_Application" basePath="/" connector="dog_adoption_application.module.Dog_Adoption_Application" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/dog_adoption_application.module.Process-Adoption_Application.json">
+      <operation xmi:id="_4DSIMFK4EemAsKd-duUDwQ" operationName="put" nickname="put-updatedadoptionapplicationV2" httpMethod="PUT" responseStyle="element" requestStyle="element">
+        <responseStatus xmi:id="_mrDmMFK6EemAsKd-duUDwQ" statusCode="202" reasonPhrase="Successful" dataType="string"/>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_4DWZoFK4EemAsKd-duUDwQ"/>
+      <advancedConfig xmi:id="_4DRhIVK4EemAsKd-duUDwQ" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_4DSIMVK4EemAsKd-duUDwQ" bindingName="RestService4"/>
+  </sca:service>
+  <sca:service xmi:id="_-g7ZAlPUEemspbiq2U1ayQ" name="getalladoptionapplicationsv2" promote="ComponentProcess/getalladoptionapplicationsv2">
+    <sca:interface.wsdl xmi:id="_-g7ZBlPUEemspbiq2U1ayQ" interface="http://xmlns.example.com/20190323152827PLT#wsdl.interface(getalladoptionapplicationsv2)" scaext:wsdlLocation="../Processes/dog_adoption_application/module/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_-iPnoFPUEemspbiq2U1ayQ" name="RestService3" path="/getalladoptionapplicationsv2" docBasePath="http://localhost:7777/Dog_Adoption_Application_2.module" docResourcePath="Adoption_Application" basePath="/" connector="dog_adoption_application.module.Dog_Adoption_Application" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/dog_adoption_application.module.Process-Adoption_Application.json">
+      <operation xmi:id="_-ijwsFPUEemspbiq2U1ayQ" operationName="get" nickname="get-getalladoptionapplicationsv2" httpMethod="GET" responseStyle="element" requestStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_-j5NcFPUEemspbiq2U1ayQ"/>
+      <advancedConfig xmi:id="_-iPnoVPUEemspbiq2U1ayQ" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_-ijwsVPUEemspbiq2U1ayQ" bindingName="RestService3"/>
+  </sca:service>
+  <sca:service xmi:id="_zRhJkFQ9EemOA54hxHtckw" name="updateadoptionapplication" promote="ComponentProcess/updateadoptionapplication">
+    <sca:interface.wsdl xmi:id="_zSmusFQ9EemOA54hxHtckw" interface="http://xmlns.example.com/20190323152827PLT#wsdl.interface(updateadoptionapplication3)" scaext:wsdlLocation="../Processes/dog_adoption_application/module/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_zUEHQFQ9EemOA54hxHtckw" name="RestService5" path="/updateadoptionapplication" docBasePath="http://localhost:7777/Dog_Adoption_Application_2.module" docResourcePath="Adoption_Application" basePath="/" connector="dog_adoption_application.module.Dog_Adoption_Application" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/dog_adoption_application.module.Process-Adoption_Application.json">
+      <operation xmi:id="_zUUl8FQ9EemOA54hxHtckw" operationName="put" nickname="put-updateadoptionapplication" httpMethod="PUT" responseStyle="element" requestStyle="element">
+        <responseStatus xmi:id="_-TBIIFQ9EemOA54hxHtckw" statusCode="202" reasonPhrase="Updated Successfully" dataType="string"/>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_zUY3YFQ9EemOA54hxHtckw"/>
+      <advancedConfig xmi:id="_zUEHQVQ9EemOA54hxHtckw" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_zUUl8VQ9EemOA54hxHtckw" bindingName="RestService5"/>
+  </sca:service>
+  <sca:property xmi:id="_ckMxkE1BEemHyeqCRsO6Fw" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_ckZl4E1BEemHyeqCRsO6Fw" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_ckfsgE1BEemHyeqCRsO6Fw" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_cknBQE1BEemHyeqCRsO6Fw" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_cktu8E1BEemHyeqCRsO6Fw" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_ckz1kE1BEemHyeqCRsO6Fw" name="BW.CLOUD.PORT" type="XMLSchema:int" scalable="true"/>
+  <sca:property xmi:id="_ck6jQE1BEemHyeqCRsO6Fw" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:component xmi:id="_cRbmkE1BEemHyeqCRsO6Fw" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_cRbmkU1BEemHyeqCRsO6Fw" processName="dog_adoption_application.module.Process"/>
+    <sca:service xmi:id="_leVwIE1DEem3LpEI0nS25Q" name="newadoptionapplication">
+      <sca:interface.wsdl xmi:id="_leW-QE1DEem3LpEI0nS25Q" interface="http://xmlns.example.com/20190323152827PLT#wsdl.interface(newadoptionapplication2)"/>
+    </sca:service>
+    <sca:service xmi:id="_U7x1YE1GEem3LpEI0nS25Q" name="getalladoptionapplications">
+      <sca:interface.wsdl xmi:id="_U7x1YU1GEem3LpEI0nS25Q" interface="http://xmlns.example.com/20190323152827PLT#wsdl.interface(getalladoptionapplications)"/>
+    </sca:service>
+    <sca:service xmi:id="_mHghkE1GEem3LpEI0nS25Q" name="getadoptionapplication">
+      <sca:interface.wsdl xmi:id="_mHghkU1GEem3LpEI0nS25Q" interface="http://xmlns.example.com/20190323152827PLT#wsdl.interface(getadoptionapplication)"/>
+    </sca:service>
+    <sca:service xmi:id="_4DOd0FK4EemAsKd-duUDwQ" name="updatedadoptionapplicationV2">
+      <sca:interface.wsdl xmi:id="_4DOd0VK4EemAsKd-duUDwQ" interface="http://xmlns.example.com/20190323152827PLT#wsdl.interface(updatedadoptionapplicationV2)"/>
+    </sca:service>
+    <sca:service xmi:id="_-g7ZAFPUEemspbiq2U1ayQ" name="getalladoptionapplicationsv2">
+      <sca:interface.wsdl xmi:id="_-g7ZAVPUEemspbiq2U1ayQ" interface="http://xmlns.example.com/20190323152827PLT#wsdl.interface(getalladoptionapplicationsv2)" scaext:wsdlLocation="../Processes/dog_adoption_application/module/Process.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_zReGQFQ9EemOA54hxHtckw" name="updateadoptionapplication">
+      <sca:interface.wsdl xmi:id="_zRetUFQ9EemOA54hxHtckw" interface="http://xmlns.example.com/20190323152827PLT#wsdl.interface(updateadoptionapplication3)"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

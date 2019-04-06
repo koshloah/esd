@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmlns:smtp="http://xsd.tns.tibco.com/bw/models/sharedresource/smtp" xmlns:subject="http://xsd.tns.tibco.com/trinity/models/identity/subject" xmi:id="_hh1C4VPIEem00JU44YLUww" name="mailtest.module.SMTPResource" type="smtp:SmtpConfiguration">
+  <jndi:reference xmi:id="_hh1p8FPIEem00JU44YLUww" key="identityJNDIName" type="subject:SubjectConfiguration" value=""/>
+  <jndi:configuration xsi:type="smtp:SmtpConfiguration" xmi:id="_hh1p8VPIEem00JU44YLUww">
+    <tcpDetails xmi:id="_hh1p8lPIEem00JU44YLUww" host="pro.turbo-smtp.com" port="2525" soTimeout="3000" connectionTimeout="60000"/>
+    <userCredentials xmi:id="_hh1p81PIEem00JU44YLUww" username="adogtion123@gmail.com" password="#!AH6k0zNKor2jGRTvkRWNF8oSE0B/QQM7gO+KZrGQTME="/>
+  </jndi:configuration>
+</jndi:namedResource>

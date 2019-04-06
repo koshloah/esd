@@ -21,12 +21,19 @@ $selectedDogBreed = "";
 $uniqueDogBreeds = [];
 $subscriptionMessage = "";
 
-if(isset($_SESSION["dogList"])){
-    $allDogs = $_SESSION["dogList"];
+$url = $dogManagementServiceURL;
+$json = file_get_contents($url);
+$data = json_decode($json);
+
+if($data != false){
+    $allDogs = $data->Dog;
     foreach($allDogs as $eachDog){
         $uniqueDogBreeds[]=$eachDog->breed;
     }
     $dogBreeds = array_unique($uniqueDogBreeds);
+    $dogBreedStatus = "success";
+    $_SESSION["dogList"] = $allDogs;
+
     $dogBreedStatus = "success";
     if(isset($_SESSION["staff_breed"])){
         $selectedDogBreed = $_SESSION["staff_breed"];
@@ -82,25 +89,10 @@ if(isset($_SESSION["dogList"])){
         
     }
 }
-// retrieve from dog service if session is empty
 else{
-    $url = $dogManagementServiceURL;
-    $json = file_get_contents($url);
-    $data = json_decode($json);
-
-    if($data != false){
-        $allDogs = $data->Dog;
-        foreach($allDogs as $eachDog){
-            $uniqueDogBreeds[]=$eachDog->breed;
-        }
-        $dogBreeds = array_unique($uniqueDogBreeds);
-        $dogBreedStatus = "success";
-        $_SESSION["dogList"] = $allDogs;
-    }
-    else{
-        header("Location: staffhome.php");
-    }
+    header("Location: staffhome.php");
 }
+
 
 
 //var_dump($_REQUEST);

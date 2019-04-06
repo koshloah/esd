@@ -1,0 +1,267 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "new adoption application",
+    "description" : "new adoption application"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/newadoptionapplication" : {
+      "post" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "post-newadoptionapplication",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/Add_Adoption_Application"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Dog Adoption Application Successfully Created",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/getalladoptionapplicationsv2" : {
+      "get" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "get-getalladoptionapplicationsv2",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "a Applications to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/Applications"
+            }
+          }
+        }
+      }
+    },
+    "/getalladoptionapplications" : {
+      "get" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "get-getalladoptionapplications",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "a Applications to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/Applications"
+            }
+          }
+        }
+      }
+    },
+    "/updatedadoptionapplicationV2" : {
+      "put" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "put-updatedadoptionapplicationV2",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/Update_Adoption_Application_Status"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "202" : {
+            "description" : "Successful",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/getadoptionapplication/{Application_ID}" : {
+      "get" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "get-getadoptionapplication",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Application_ID",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a Application to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/Application"
+            }
+          }
+        }
+      }
+    },
+    "/updateadoptionapplication" : {
+      "put" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "put-updateadoptionapplication",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/Update_Adoption_Application_Status"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "202" : {
+            "description" : "Updated Successfully",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Add_Adoption_Application" : {
+      "type" : "object",
+      "required" : [ "firstName", "lastName", "reason", "dogID", "address", "postalCode", "payment_Status", "ApplicationID", "application_Status", "email", "phoneNo" ],
+      "properties" : {
+        "ApplicationID" : {
+          "type" : "string"
+        },
+        "firstName" : {
+          "type" : "string"
+        },
+        "lastName" : {
+          "type" : "string"
+        },
+        "address" : {
+          "type" : "string"
+        },
+        "postalCode" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "phoneNo" : {
+          "type" : "string"
+        },
+        "reason" : {
+          "type" : "string"
+        },
+        "dogID" : {
+          "type" : "string"
+        },
+        "application_Status" : {
+          "type" : "string"
+        },
+        "payment_Status" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Applications" : {
+      "type" : "object",
+      "properties" : {
+        "Application" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Application",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "Update_Adoption_Application_Status" : {
+      "type" : "object",
+      "required" : [ "payment_Status", "ApplicationID", "application_Status" ],
+      "properties" : {
+        "ApplicationID" : {
+          "type" : "string"
+        },
+        "application_Status" : {
+          "type" : "string"
+        },
+        "payment_Status" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Application" : {
+      "type" : "object",
+      "required" : [ "firstName", "lastName", "reason", "dogID", "address", "postalCode", "payment_Status", "ApplicationID", "application_Status", "email", "phoneNo" ],
+      "properties" : {
+        "ApplicationID" : {
+          "type" : "string"
+        },
+        "firstName" : {
+          "type" : "string"
+        },
+        "lastName" : {
+          "type" : "string"
+        },
+        "address" : {
+          "type" : "string"
+        },
+        "postalCode" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "phoneNo" : {
+          "type" : "string"
+        },
+        "reason" : {
+          "type" : "string"
+        },
+        "dogID" : {
+          "type" : "string"
+        },
+        "application_Status" : {
+          "type" : "string"
+        },
+        "payment_Status" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

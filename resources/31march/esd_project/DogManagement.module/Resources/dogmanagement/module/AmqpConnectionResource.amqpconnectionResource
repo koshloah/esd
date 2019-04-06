@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amqp="http://ns.tibco.com/bw/sharedresource/amqp" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmi:id="_tomcsVOiEem6KvdD6Rb0zQ" name="dogmanagement.module.AmqpConnectionResource" type="amqp:AmqpConnection">
+  <jndi:configuration xsi:type="amqp:AmqpConnection" xmi:id="_tomcslOiEem6KvdD6Rb0zQ" brokerType="RabbitMQ-0-9" connectionUrl="amqp://&lt;host>:&lt;port>/?sync-publish=false&amp;max-sessions=0" host="localhost:5672" userName="guest" passWord="#!/Xn0RjNqtQ0LY0yXRE5zHDo/Y0swBBaY" connectionTimeout="3000" networkRecoveryInterval="6000" autoAck="true" ackMode="Auto" queueDurable="true" hostQpid="&lt;host>:&lt;port>" connectionTimeoutQpid="3000" reconnectionTryTimes="3" retryIntervalTime="3000"/>
+</jndi:namedResource>

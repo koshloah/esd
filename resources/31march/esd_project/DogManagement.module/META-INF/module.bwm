@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_IuGGMFKZEemOOZBodfr6LA" targetNamespace="http://tns.tibco.com/bw/composite/DogManagement.module" name="DogManagement.module" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_ZLhFcFKaEemOOZBodfr6LA" name="dogs" promote="ComponentProcess/dogs">
+    <sca:interface.wsdl xmi:id="_ZLnzIFKaEemOOZBodfr6LA" interface="http://xmlns.example.com/20190330103849PLT#wsdl.interface(dogs)" scaext:wsdlLocation="../Processes/dogmanagement/module/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_ZLvH4FKaEemOOZBodfr6LA" name="RestService" path="/dogs" docBasePath="http://localhost:7777/DogManagement.module" docResourcePath="Dogs" basePath="/" connector="dogmanagement.module.Dogs" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/dogmanagement.module.Process-Dogs.json">
+      <operation xmi:id="_ZLyyQFKaEemOOZBodfr6LA" operationName="get" nickname="get-dogs" httpMethod="GET" responseStyle="element" requestStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_ZMlccFKaEemOOZBodfr6LA"/>
+      <advancedConfig xmi:id="_ZLxkIFKaEemOOZBodfr6LA" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_ZLyyQVKaEemOOZBodfr6LA" bindingName="RestService"/>
+  </sca:service>
+  <sca:service xmi:id="_crrkElKbEemOOZBodfr6LA" name="dog" promote="ComponentProcess/dog">
+    <sca:interface.wsdl xmi:id="_crsLIFKbEemOOZBodfr6LA" interface="http://xmlns.example.com/20190330103849PLT#wsdl.interface(dog)" scaext:wsdlLocation="../Processes/dogmanagement/module/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_crsLIVKbEemOOZBodfr6LA" name="RestService1" path="/dog/{id}" docBasePath="http://localhost:7777/DogManagement.module" docResourcePath="Dogs" basePath="/" connector="dogmanagement.module.Dogs" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/dogmanagement.module.Process-Dogs.json">
+      <operation xmi:id="_crsyMFKbEemOOZBodfr6LA" operationName="get" nickname="get-dog" httpMethod="GET" responseStyle="element" requestStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_crtZQFKbEemOOZBodfr6LA">
+        <parameterMapping xmi:id="_crunYFKbEemOOZBodfr6LA" parameterName="id" parameterType="Path" required="true"/>
+      </parameters>
+      <advancedConfig xmi:id="_crsLIlKbEemOOZBodfr6LA" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_crsyMVKbEemOOZBodfr6LA" bindingName="RestService1"/>
+  </sca:service>
+  <sca:service xmi:id="_DkeZolKcEemOOZBodfr6LA" name="add_dog" promote="ComponentProcess/add_dog">
+    <sca:interface.wsdl xmi:id="_DkeZplKcEemOOZBodfr6LA" interface="http://xmlns.example.com/20190330103849PLT#wsdl.interface(add_dog)" scaext:wsdlLocation="../Processes/dogmanagement/module/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_DkfnwFKcEemOOZBodfr6LA" name="RestService2" path="/add_dog" docBasePath="http://localhost:7777/DogManagement.module" docResourcePath="Dogs" basePath="/" connector="dogmanagement.module.Dogs" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/dogmanagement.module.Process-Dogs.json">
+      <operation xmi:id="_DkfnwlKcEemOOZBodfr6LA" operationName="post" nickname="post-add_dog" httpMethod="POST" responseStyle="element" requestStyle="element">
+        <responseStatus xmi:id="_IpIw4FKdEemOOZBodfr6LA" statusCode="201" reasonPhrase="Created" dataType="string"/>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_Dkhc8FKcEemOOZBodfr6LA"/>
+      <advancedConfig xmi:id="_DkfnwVKcEemOOZBodfr6LA" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_Dkfnw1KcEemOOZBodfr6LA" bindingName="RestService2"/>
+  </sca:service>
+  <sca:service xmi:id="_rpwbAlKdEemOOZBodfr6LA" name="change_status" promote="ComponentProcess/change_status">
+    <sca:interface.wsdl xmi:id="_rpxCElKdEemOOZBodfr6LA" interface="http://xmlns.example.com/20190330103849PLT#wsdl.interface(change_status)" scaext:wsdlLocation="../Processes/dogmanagement/module/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_rpxpIFKdEemOOZBodfr6LA" name="RestService3" path="/change_status" docBasePath="http://localhost:7777/DogManagement.module" docResourcePath="Dogs" basePath="/" connector="dogmanagement.module.Dogs" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/dogmanagement.module.Process-Dogs.json">
+      <operation xmi:id="_rpyQMFKdEemOOZBodfr6LA" operationName="put" nickname="put-change_status" httpMethod="PUT" responseStyle="element" requestStyle="element">
+        <responseStatus xmi:id="_SzeBcFKeEemOOZBodfr6LA" statusCode="200" reasonPhrase="OK" dataType="string"/>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_rp1TgFKdEemOOZBodfr6LA"/>
+      <advancedConfig xmi:id="_rpxpIVKdEemOOZBodfr6LA" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_rpyQMVKdEemOOZBodfr6LA" bindingName="RestService3"/>
+  </sca:service>
+  <sca:service xmi:id="_ACxlwFKiEem-q8mbR05dCQ" name="latest_dogs" promote="ComponentProcess/latest_dogs">
+    <sca:interface.wsdl xmi:id="_AC2eQFKiEem-q8mbR05dCQ" interface="http://xmlns.example.com/20190330103849PLT#wsdl.interface(latest_dogs)" scaext:wsdlLocation="../Processes/dogmanagement/module/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_AC7WwFKiEem-q8mbR05dCQ" name="RestService4" path="/latest_dogs" docBasePath="http://localhost:7777/DogManagement.module" docResourcePath="Dogs" basePath="/" connector="dogmanagement.module.Dogs" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/dogmanagement.module.Process-Dogs.json">
+      <operation xmi:id="_AC790FKiEem-q8mbR05dCQ" operationName="get" nickname="get-latest_dogs" httpMethod="GET" responseStyle="element" requestStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_ADA2UFKiEem-q8mbR05dCQ"/>
+      <advancedConfig xmi:id="_AC7WwVKiEem-q8mbR05dCQ" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_AC8k4FKiEem-q8mbR05dCQ" bindingName="RestService4"/>
+  </sca:service>
+  <sca:service xmi:id="_Rf29olPUEemspbiq2U1ayQ" name="getallavailabledogsid" promote="ComponentProcess/getallavailabledogsid">
+    <sca:interface.wsdl xmi:id="_Rf29plPUEemspbiq2U1ayQ" interface="http://xmlns.example.com/20190330103849PLT#wsdl.interface(getallavailabledogsid)" scaext:wsdlLocation="../Processes/dogmanagement/module/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_RhYAkFPUEemspbiq2U1ayQ" name="RestService5" path="/getallavailabledogsid" docBasePath="http://localhost:7777/DogManagement.module" docResourcePath="Dogs" basePath="/" connector="dogmanagement.module.Dogs" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/dogmanagement.module.Process-Dogs.json">
+      <operation xmi:id="_RhrikFPUEemspbiq2U1ayQ" operationName="get" nickname="get-getallavailabledogsid" httpMethod="GET" responseStyle="element" requestStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_RjKJQFPUEemspbiq2U1ayQ"/>
+      <advancedConfig xmi:id="_RhYAkVPUEemspbiq2U1ayQ" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_RhrikVPUEemspbiq2U1ayQ" bindingName="RestService5"/>
+  </sca:service>
+  <sca:service xmi:id="_qGmp4lPUEemspbiq2U1ayQ" name="getallunavailabledogsid" promote="ComponentProcess/getallunavailabledogsid">
+    <sca:interface.wsdl xmi:id="_qIfgQFPUEemspbiq2U1ayQ" interface="http://xmlns.example.com/20190330103849PLT#wsdl.interface(getallunavailabledogsid)" scaext:wsdlLocation="../Processes/dogmanagement/module/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_qLDFAFPUEemspbiq2U1ayQ" name="RestService6" path="/getallunavailabledogsid" docBasePath="http://localhost:7777/DogManagement.module" docResourcePath="Dogs" basePath="/" connector="dogmanagement.module.Dogs" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/dogmanagement.module.Process-Dogs.json">
+      <operation xmi:id="_qLV_8FPUEemspbiq2U1ayQ" operationName="get" nickname="get-getallunavailabledogsid" httpMethod="GET" responseStyle="element" requestStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_qMoZYFPUEemspbiq2U1ayQ"/>
+      <advancedConfig xmi:id="_qLDFAVPUEemspbiq2U1ayQ" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_qLV_8VPUEemspbiq2U1ayQ" bindingName="RestService6"/>
+  </sca:service>
+  <sca:property xmi:id="_JVQM0FKZEemOOZBodfr6LA" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_JVcaEFKZEemOOZBodfr6LA" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_JVhSkFKZEemOOZBodfr6LA" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_JVmLEFKZEemOOZBodfr6LA" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_JVrDkFKZEemOOZBodfr6LA" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_JVvVAFKZEemOOZBodfr6LA" name="BW.CLOUD.PORT" type="XMLSchema:int" scalable="true"/>
+  <sca:property xmi:id="_JV0NgFKZEemOOZBodfr6LA" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:component xmi:id="_JFRQEFKZEemOOZBodfr6LA" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_JFR3IFKZEemOOZBodfr6LA" processName="dogmanagement.module.Process"/>
+    <sca:service xmi:id="_ZLc0AFKaEemOOZBodfr6LA" name="dogs">
+      <sca:interface.wsdl xmi:id="_ZLepMFKaEemOOZBodfr6LA" interface="http://xmlns.example.com/20190330103849PLT#wsdl.interface(dogs)"/>
+    </sca:service>
+    <sca:service xmi:id="_crrkEFKbEemOOZBodfr6LA" name="dog">
+      <sca:interface.wsdl xmi:id="_crrkEVKbEemOOZBodfr6LA" interface="http://xmlns.example.com/20190330103849PLT#wsdl.interface(dog)"/>
+    </sca:service>
+    <sca:service xmi:id="_DkeZoFKcEemOOZBodfr6LA" name="add_dog">
+      <sca:interface.wsdl xmi:id="_DkeZoVKcEemOOZBodfr6LA" interface="http://xmlns.example.com/20190330103849PLT#wsdl.interface(add_dog)"/>
+    </sca:service>
+    <sca:service xmi:id="_rpwbAFKdEemOOZBodfr6LA" name="change_status">
+      <sca:interface.wsdl xmi:id="_rpwbAVKdEemOOZBodfr6LA" interface="http://xmlns.example.com/20190330103849PLT#wsdl.interface(change_status)"/>
+    </sca:service>
+    <sca:service xmi:id="_ACvJgFKiEem-q8mbR05dCQ" name="latest_dogs">
+      <sca:interface.wsdl xmi:id="_ACvwkFKiEem-q8mbR05dCQ" interface="http://xmlns.example.com/20190330103849PLT#wsdl.interface(latest_dogs)" scaext:wsdlLocation="../Processes/dogmanagement/module/Process.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_Rf29oFPUEemspbiq2U1ayQ" name="getallavailabledogsid">
+      <sca:interface.wsdl xmi:id="_Rf29oVPUEemspbiq2U1ayQ" interface="http://xmlns.example.com/20190330103849PLT#wsdl.interface(getallavailabledogsid)"/>
+    </sca:service>
+    <sca:service xmi:id="_qGmp4FPUEemspbiq2U1ayQ" name="getallunavailabledogsid">
+      <sca:interface.wsdl xmi:id="_qGmp4VPUEemspbiq2U1ayQ" interface="http://xmlns.example.com/20190330103849PLT#wsdl.interface(getallunavailabledogsid)" scaext:wsdlLocation="../Processes/dogmanagement/module/Process.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_rQVk0FOiEem6KvdD6Rb0zQ" name="Componentupdate_db_AMQP" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_rQVk0VOiEem6KvdD6Rb0zQ" processName="dogmanagement.module.update_db_AMQP"/>
+  </sca:component>
+</sca:composite>

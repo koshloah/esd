@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_O3BIwEylEemdAs1oSzM4wQ" targetNamespace="http://tns.tibco.com/bw/composite/outcome_notification.module" name="outcome_notification.module" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_Vil0QlPJEemspbiq2U1ayQ" name="outcome_notification_v2" promote="Componentoutcome_notification_database/outcome_notification_v2">
+    <sca:interface.wsdl xmi:id="_VimbUFPJEemspbiq2U1ayQ" interface="http://xmlns.example.com/20190331194744PLT#wsdl.interface(outcome_notification_v2)" scaext:wsdlLocation="../Processes/outcome_notification/module/outcome_notification_database.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_VjKcAFPJEemspbiq2U1ayQ" name="RestService1" path="/outcome_notification_v2" docBasePath="http://localhost:7777/outcome_notification.module" docResourcePath="outcome_notification" basePath="/" connector="outcome_notification.module.outcome_notification" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/outcome_notification.module.outcome_notification_database-outcome_notification.json">
+      <operation xmi:id="_VjXQUFPJEemspbiq2U1ayQ" operationName="post" nickname="post-outcome_notification_v2" httpMethod="POST" responseStyle="element" requestStyle="element">
+        <responseStatus xmi:id="_qfN_MFPJEemspbiq2U1ayQ" statusCode="201" reasonPhrase="Ok" dataType="string"/>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_VjcI0FPJEemspbiq2U1ayQ"/>
+      <advancedConfig xmi:id="_VjKcAVPJEemspbiq2U1ayQ" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_VjXQUVPJEemspbiq2U1ayQ" bindingName="RestService1"/>
+  </sca:service>
+  <sca:property xmi:id="_PbwNgEylEemdAs1oSzM4wQ" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_Pb7MoEylEemdAs1oSzM4wQ" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_PcChYEylEemdAs1oSzM4wQ" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_PcLEQEylEemdAs1oSzM4wQ" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_PcTnIEylEemdAs1oSzM4wQ" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_PcZGsEylEemdAs1oSzM4wQ" name="BW.CLOUD.PORT" type="XMLSchema:int" scalable="true"/>
+  <sca:property xmi:id="_PcgbcEylEemdAs1oSzM4wQ" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:component xmi:id="_JFeygEymEemdAs1oSzM4wQ" name="Componentreceive_AMPQ" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_JFeygUymEemdAs1oSzM4wQ" processName="outcome_notification.module.receive_AMQP"/>
+  </sca:component>
+  <sca:component xmi:id="__P1isFOuEem41O86-nhWhA" name="Componentoutcome_notification_database" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="__P1isVOuEem41O86-nhWhA" processName="outcome_notification.module.outcome_notification_database"/>
+    <sca:service xmi:id="_Vil0QFPJEemspbiq2U1ayQ" name="outcome_notification_v2">
+      <sca:interface.wsdl xmi:id="_Vil0QVPJEemspbiq2U1ayQ" interface="http://xmlns.example.com/20190331194744PLT#wsdl.interface(outcome_notification_v2)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_WT5PkFQwEemLvY6pLGDsIw" name="Componentavailability_receive_AMQP" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_WT5PkVQwEemLvY6pLGDsIw" processName="outcome_notification.module.availability_receive_AMQP"/>
+  </sca:component>
+</sca:composite>

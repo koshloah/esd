@@ -1,0 +1,92 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Subscribing",
+    "description" : "Subscribing"
+  },
+  "host" : "localhost:8085",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/unsubscribe/{email}" : {
+      "put" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "put-unsubscribe",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/Drop_Sub"
+          },
+          "required" : true
+        }, {
+          "name" : "email",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "headers" : { }
+          }
+        }
+      }
+    },
+    "/subscription" : {
+      "post" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "post-subscription",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/Add_Sub"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Add_Sub" : {
+      "type" : "object",
+      "required" : [ "email" ],
+      "properties" : {
+        "email" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Drop_Sub" : {
+      "type" : "object",
+      "required" : [ "email" ],
+      "properties" : {
+        "email" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

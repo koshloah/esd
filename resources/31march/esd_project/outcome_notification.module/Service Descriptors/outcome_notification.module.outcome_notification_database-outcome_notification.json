@@ -1,0 +1,62 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8082",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/outcome_notification_v2" : {
+      "post" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "post-outcome_notification_v2",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/Outcome_notification"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Ok",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Outcome_notification" : {
+      "type" : "object",
+      "required" : [ "telegram_username", "application_id", "email", "chat_id" ],
+      "properties" : {
+        "application_id" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "chat_id" : {
+          "type" : "integer"
+        },
+        "telegram_username" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

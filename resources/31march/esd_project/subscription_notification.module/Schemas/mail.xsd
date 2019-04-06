@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Liquid Studio 2018 (https://www.liquid-technologies.com) -->
+<xs:schema xmlns:source="bw.rest" xmlns:tns="http://xmlns.example.com/subscription_email/parameters" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xmlns.example.com/subscription_email/parameters">
+    <xs:element name="subscription_emailPostParameters">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="email" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

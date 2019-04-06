@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_PYpFYFPHEem00JU44YLUww" targetNamespace="http://tns.tibco.com/bw/composite/subscription_notification.module" name="subscription_notification.module" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_6CaSMFPHEem00JU44YLUww" name="mail" promote="ComponentProcess/mail">
+    <sca:interface.wsdl xmi:id="_6CiOAFPHEem00JU44YLUww" interface="http://xmlns.example.com/20190331224121PLT#wsdl.interface(mail)" scaext:wsdlLocation="../Processes/mailtest/module/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_6Cr_AFPHEem00JU44YLUww" name="RestService" path="/mail/{mail}" docBasePath="http://localhost:7777/subscription_notification.module" docResourcePath="mail" basePath="/" connector="mailtest.module.mail" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/mailtest.module.Process-mail.json">
+      <operation xmi:id="_6C0h4FPHEem00JU44YLUww" operationName="post" nickname="post-mail" httpMethod="POST" responseStyle="element" requestStyle="element">
+        <responseStatus xmi:id="_MrzZwFPJEem00JU44YLUww" statusCode="201" reasonPhrase="Created" dataType="string"/>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_6DM8YFPHEem00JU44YLUww">
+        <parameterMapping xmi:id="_6DM8YVPHEem00JU44YLUww" parameterName="mail" parameterType="Path" required="true"/>
+      </parameters>
+      <advancedConfig xmi:id="_6Cr_AVPHEem00JU44YLUww" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_6C0h4VPHEem00JU44YLUww" bindingName="RestService"/>
+  </sca:service>
+  <sca:property xmi:id="_PmG5oFPHEem00JU44YLUww" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_PmjlkFPHEem00JU44YLUww" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_Pm8nIFPHEem00JU44YLUww" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_PnL3sFPHEem00JU44YLUww" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_PnZ6IFPHEem00JU44YLUww" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_PnmHYFPHEem00JU44YLUww" name="BW.CLOUD.PORT" type="XMLSchema:int" scalable="true"/>
+  <sca:property xmi:id="_PnziwFPHEem00JU44YLUww" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:component xmi:id="_PepmwFPHEem00JU44YLUww" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_PepmwVPHEem00JU44YLUww" processName="mailtest.module.Process"/>
+    <sca:service xmi:id="_6CULkFPHEem00JU44YLUww" name="mail">
+      <sca:interface.wsdl xmi:id="_6CWAwFPHEem00JU44YLUww" interface="http://xmlns.example.com/20190331224121PLT#wsdl.interface(mail)"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

@@ -1,0 +1,304 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Get all dogs",
+    "description" : "Get all dogs"
+  },
+  "host" : "localhost:8081",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/change_status" : {
+      "put" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "put-change_status",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/Change_Status"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "headers" : { }
+          }
+        }
+      }
+    },
+    "/dogs" : {
+      "get" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "get-dogs",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "a Dogs to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/Dogs"
+            }
+          }
+        }
+      }
+    },
+    "/dog/{id}" : {
+      "get" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "get-dog",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a Dog to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/Dog"
+            }
+          }
+        }
+      }
+    },
+    "/getallavailabledogsid" : {
+      "get" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "get-getallavailabledogsid",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "a getIDs to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/getIDs"
+            }
+          }
+        }
+      }
+    },
+    "/add_dog" : {
+      "post" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "post-add_dog",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/Add_Dog"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/latest_dogs" : {
+      "get" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "get-latest_dogs",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "a Dogs to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/Dogs"
+            }
+          }
+        }
+      }
+    },
+    "/getallunavailabledogsid" : {
+      "get" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "get-getallunavailabledogsid",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "a getIDs to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/getIDs"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Dogs" : {
+      "type" : "object",
+      "properties" : {
+        "Dog" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Dog",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "Add_Dog" : {
+      "type" : "object",
+      "required" : [ "sex", "hasShots", "description", "breed", "dateAdded", "altered", "houseTrained", "pic1", "size", "name", "id", "pic2", "age", "status" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "age" : {
+          "type" : "string"
+        },
+        "breed" : {
+          "type" : "string"
+        },
+        "size" : {
+          "type" : "string"
+        },
+        "sex" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "altered" : {
+          "type" : "string"
+        },
+        "hasShots" : {
+          "type" : "string"
+        },
+        "houseTrained" : {
+          "type" : "string"
+        },
+        "dateAdded" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "pic1" : {
+          "type" : "string"
+        },
+        "pic2" : {
+          "type" : "string"
+        }
+      }
+    },
+    "getIDs" : {
+      "type" : "object",
+      "properties" : {
+        "getID" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/getID",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "getID" : {
+      "type" : "object",
+      "required" : [ "id" ],
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Dog" : {
+      "type" : "object",
+      "required" : [ "sex", "hasShots", "description", "breed", "dateAdded", "altered", "houseTrained", "pic1", "size", "name", "id", "pic2", "age", "status" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "age" : {
+          "type" : "string"
+        },
+        "breed" : {
+          "type" : "string"
+        },
+        "size" : {
+          "type" : "string"
+        },
+        "sex" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "altered" : {
+          "type" : "string"
+        },
+        "hasShots" : {
+          "type" : "string"
+        },
+        "houseTrained" : {
+          "type" : "string"
+        },
+        "dateAdded" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "pic1" : {
+          "type" : "string"
+        },
+        "pic2" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Change_Status" : {
+      "type" : "object",
+      "required" : [ "id" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer"
+        }
+      }
+    }
+  }
+}

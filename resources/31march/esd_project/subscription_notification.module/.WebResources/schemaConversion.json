@@ -1,0 +1,5 @@
+{"records": [{
+    "jsonSchemaLocation": "/subscription_notification.module/Service Descriptors/mailtest.module.Process-mail.json",
+    "conversionType": "linked",
+    "xsdSchemaTargetNamespace": "http://xmlns.example.com/subscription_email/parameters"
+}]}

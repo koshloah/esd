@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Created with Liquid Studio 2018 (https://www.liquid-technologies.com) -->
+<schema xmlns:tns="Sub" elementFormDefault="qualified" targetNamespace="Sub" xmlns="http://www.w3.org/2001/XMLSchema">
+    <complexType name="Add_Sub">
+        <sequence>
+            <element name="email" type="string" />
+        </sequence>
+    </complexType>
+    <element name="Add_Sub" type="tns:Add_Sub" />
+    <complexType name="Drop_Sub">
+        <sequence>
+            <element name="email" type="string" />
+        </sequence>
+    </complexType>
+    <element name="Drop_Sub" type="tns:Drop_Sub" />
+    <complexType name="subs">
+        <sequence>
+            <element ref="tns:Add_Sub" minOccurs="0" maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+    <element name="subs" type="tns:subs" />
+</schema>
