@@ -135,8 +135,8 @@
         $username = urlencode('esdg1t6_api1.gmail.com');
         $password = urlencode('KC23C5EBXBXDZBR3');
         $signature = urlencode('AO2poBy4MdVpK3od9pT9zvRySJOPAY6eR7RekDkLXMQuXxzPM12EJr8t');
-        $returnurl = urlencode('http://localhost/esd/payment.php'); // where the user is sent upon successful completion
-        $cancelurl = urlencode('http://localhost/esd/logout.php'); // where the user is sent upon canceling the transaction
+        $returnurl = $paypalSuccessURL; // where the user is sent upon successful completion
+        $cancelurl = $paypalUnsuccessfulURL; // where the user is sent upon canceling the transaction
         $post[] = "USER=$username";
         $post[] = "PWD=$password";
         $post[] = "SIGNATURE=$signature";

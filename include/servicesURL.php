@@ -41,4 +41,11 @@
     // create subscription to receive weekly notification of new dog updates 
     $newSubscriptionServiceURL = "http://LAPTOP-LYJK:8085/subscription";
 
+
+    // paypal redirect when token is successfully retrieved - change to the directory where the payment.php is stored
+    $paypalSuccessURL = urlencode('http://localhost/esd/payment.php'); 
+
+    // paypal redirect when token is retrieved successfully retrieved - change to the directory where the logout.php is stored
+    $paypalUnsuccessfulURL = urlencode('http://localhost/esd/logout.php');
+
 ?>
