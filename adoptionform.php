@@ -9,7 +9,15 @@ $emailNoDuplicate = "";
     if(isset($_REQUEST["dogID"])){
         $dogID = $_REQUEST["dogID"];
 
-        if(isset($_SESSION["dogList"])){
+        $url = $dogManagementGetDogURL.$dogID;
+        $json = file_get_contents($url);
+        $eachDog = json_decode($json);
+
+        if($eachDog != false){
+            $dogName = $eachDog->name;
+            $dogPic = $eachDog->pic1;
+        }
+        /*if(isset($_SESSION["dogList"])){
             $dogArray = $_SESSION["dogList"];
             foreach($dogArray as $eachDog){
                 if($eachDog->id == $dogID){
@@ -17,7 +25,7 @@ $emailNoDuplicate = "";
                     $dogPic = $eachDog->pic1;
                 }
             }
-        }
+        }*/
         else{
             header("Location: adopt-view.php");
         }

@@ -18,9 +18,29 @@ $dogPic2 = "";
 
 if(isset($_REQUEST['dogid'])){
     $dogID = $_REQUEST['dogid'];
-    //echo $dogID;
+	//echo $dogID;
+	
+	$url = $dogManagementGetDogURL.$dogID;
+	$json = file_get_contents($url);
+	$eachDog = json_decode($json);
 
-    if(isset($_SESSION["dogList"])){
+	if($eachDog != false){
+		$dogName = $eachDog->name;
+		$dogAge = $eachDog->age;
+		$dogBreed = $eachDog->breed;
+		$dogSize = $eachDog->size;
+		$dogSex = $eachDog->sex;
+		$dogStatus = $eachDog->status;
+		$dogAltered = ucfirst($eachDog->altered);
+		$dogHasShots = ucfirst($eachDog->hasShots);
+		$dogHouseTrained = ucfirst($eachDog->houseTrained);
+		$dogDescription = $eachDog->description;
+		$dogPic1 = $eachDog->pic1;
+		$dogPic2 = $eachDog->pic2;
+	}
+
+
+    /*if(isset($_SESSION["dogList"])){
         $dogArray = $_SESSION["dogList"];
         foreach($dogArray as $eachDog){
             if($eachDog->id == $dogID){
@@ -38,7 +58,7 @@ if(isset($_REQUEST['dogid'])){
                 $dogPic2 = $eachDog->pic2;
             }
         }
-    }
+    }*/
     else{
         header("Location: adopt-view.php");
     }
