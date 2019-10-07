@@ -53,9 +53,9 @@ h. Add the following highlighted queues with the basic settings
 i. Navigate back to Exchange tab and click on availability_exchange
 j. Add binding as shown
 k. Navigate back to Exchange tab and click outcome_notification_exchange
-l. Bind dog_mgmt_queue and outcome_notification_queue 1 by 1, leave the rest blank
-.
-Note:
+l. Bind dog_mgmt_queue and outcome_notification_queue 1 by 1, leave the rest blank.
+
+##Note:
 
 ● Ensure WAMP has started if running on Windows Operating Systems (or any
 other AMP that are suitable for your Operating System)
@@ -133,7 +133,7 @@ directory where the logout.php is stored
 [12] $paypalUnsuccessfulURL = urlencode(' http://localhost/esd/ logout.php');
 
 
-##Authors
+## Authors
 @josh.lim.2017@smu.edu.sg
 @xuesi.sim.2017@sis.smu.edu.sg
 @junwei.qiu.2017@sis.smu.edu.sg
