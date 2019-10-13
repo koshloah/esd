@@ -13,33 +13,39 @@ Telegram Bot
 MySQL Database
 WAMP Stack
 
-##Change
+## Change
 Starting the project:
 1. Import SQL files into Phpmyadmin
 2. Import zipped file into tibco workspace
 3. Change HTTP client default host
-a. Expand Dog_adogtion_application_2.module [container] > Resources >
-Expand Dog_adogtion_application_2.module >HttpClientResource
+a. Expand Dog_adogtion_application_2.module [container] > Resources > Expand Dog_adogtion_application_2.module >HttpClientResource
 b. Change Host name to your own swagger host name
 c. Repeat for
+
 i. Dog_adogtion_application_2.module >HttpClientResource1
 ii. Outcome_notification.module > HttpClientResource
 iii. Subscription.module > subsc.module > HttpClientResource
+
 Microservice Resources To Change Dog_Adoption_Application_2
 1) HttpClientResource
 2) HttpClientResource1
+
 1) Default Host: < your hostname>
 Port: 8081
 2) Default Host: < your hostname>
 Port: 8081
+
 outcome_notification HttpClientResource 1) Default Host: < your hostname>
 2) Port: 8082
+
 subscription HttpClientResource 1) Default Host: < your hostname>
 2) Port: 8084
+
 4. Change Read File directory
 a. Navigate to Subscription_notification.module > Processes > mailtest.module > Process.bwp
 b. Double click Readfile
 c. Change the file directory to the subscription_email.txt
+
 5. Set up AMQP exchange
 a. Make sure it is running
 b. Navigate to localhost:15672
@@ -60,16 +66,25 @@ l. Bind dog_mgmt_queue and outcome_notification_queue 1 by 1, leave the rest bla
 other AMP that are suitable for your Operating System)
 
 ● Ensure these 4 sql has been imported into the database:
+
 ○ “dogadopt.sql”
+
 ○ “doginfo.sql”
+
 ○ “outcome_notification.sql”
+
 ○ “subscriptions.sql”
 
 ● Ensure these 5 microservices are running in Tibco BW:
+
 ○ “Dog_Adoption_Application_2”
+
 ○ “DogManagement”
+
 ○ “outcome_notification”
+
 ○ “subscription”
+
 ○ “Subscription_notification”
 
 ● Open “ home.php ” to access the user services, “ staffhome.php ” to access
