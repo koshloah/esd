@@ -37,8 +37,7 @@ outcome_notification HttpClientResource 1) Default Host: < your hostname>
 subscription HttpClientResource 1) Default Host: < your hostname>
 2) Port: 8084
 4. Change Read File directory
-a. Navigate to Subscription_notification.module > Processes > mailtest.module
-> Process.bwp
+a. Navigate to Subscription_notification.module > Processes > mailtest.module > Process.bwp
 b. Double click Readfile
 c. Change the file directory to the subscription_email.txt
 5. Set up AMQP exchange
